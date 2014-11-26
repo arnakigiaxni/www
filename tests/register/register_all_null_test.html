@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://localhost/www/register.php" />
+<title>register_all_null_test</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">register_all_null_test</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/www/views/register.php</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input[type=&quot;submit&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=form &gt; span.error</td>
+	<td>* Απαιτείται όνομα χρήστη</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//span[2]</td>
+	<td>* Απαιτείται επωνυμία καταστήματος</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//span[3]</td>
+	<td>* Απαιτείται κωδικός</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//span[4]</td>
+	<td>* Απαιτείται το e-mail</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//span[5]</td>
+	<td>* Απαιτείται πόλη</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//span[6]</td>
+	<td>* Απαιτείται διεύθυνση</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//span[8]</td>
+	<td>* Απαιτείται τηλέφωνο</td>
+</tr>
+</tbody></table>
+</body>
+</html>
