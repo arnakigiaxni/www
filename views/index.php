@@ -1,3 +1,6 @@
+<?php
+    include_once "../includes/db_connect.php";
+?>
 <html>
     <head>
         <title>Καλώς Ήρθατε</title>
@@ -16,8 +19,15 @@
                 <br/>
                 <h5> Δεν είστε μέλος; Πατήστε <a href='register.php'>εδώ</a> για να εγγραφείτε. </h5>
         </form>
-        <br />
-        <br />
         <a href='add_offer.php'>Καταχώρηση</a>
+        <br />
+        <br />
+        <?php
+        $query = "SELECT * FROM about";
+                    $result = mysql_query($query) or die(mysql_error());
+                    while($row=mysql_fetch_array($result)) {
+                        echo $row[0];
+                    }
+        ?>
     </body>
 </html>
