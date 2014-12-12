@@ -2,12 +2,18 @@
 
     include_once "db_connect.php";
     include_once "functions.php";
-    mysql_query("SET NAMES utf8");
+    include_once "../views/update_profile.php";
     error_reporting(0);
+    mysql_query("SET NAMES utf8");
     
     $comp_name = $password = $display_name = $email = $city = $address = $postal_code = $phone = $latitude = $longitude = "";
     $comp_nameError = $passwordError = $display_nameError = $emailError = $cityError = $addressError = $postal_codeError = $phoneError = $latitudeError = $longitudeError = "";    
-    $successful_register = "";  
+    $successful_update = "";
+    
+    session_start();
+    if(isset($_SESSION["comp_id"])) {
+        $id = $_SESSION["comp_id"];
+    }
 
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
                  if (empty($_POST["comp_name"])) {
@@ -16,7 +22,7 @@
                  else {
                     $comp_name = test_input($_POST["comp_name"]);
                     
-                    $query = "SELECT * FROM company WHERE comp_name='$comp_name'";
+                    $query = "SELECT * FROM company WHERE comp_name='$comp_name' AND id!='$id'";
                     $result = mysql_query($query) or die(mysql_error());
                     while($row=mysql_fetch_array($result)) {
                         $comp_name_exists = $row['comp_name'];
@@ -25,7 +31,7 @@
                         }
                     }
                         if (!preg_match("/^[a-zA-Z0-9\x80-\xFF_][a-zA-Z0-9\x80-\xFF_][a-zA-Z0-9\x80-\xFF_][a-zA-Z0-9\x80-\xFF_][a-zA-Z0-9\x80-\xFF_][a-zA-Z0-9\x80-\xFF_][a-zA-Z0-9\x80-\xFF_][a-zA-Z0-9\x80-\xFF_]*$/",$comp_name)) {
-                            $comp_nameError = "8 έως 20 χαρακτήρες ή αριθμούς και underscore"; 
+                            $comp_nameError = "8 έως 20 χαρακτήρες ή αριθμούς (χωρίς κενά & ειδικούς χαρακτήρες, εκτός απ' το underscore)"; 
                             
                         }
                  }
@@ -37,7 +43,7 @@
                  else {
                     $password = test_input($_POST["password"]);
                         if (!preg_match("/^[a-zA-Z0-9\x80-\xFF\_][a-zA-Z0-9\x80-\xFF\_][a-zA-Z0-9\x80-\xFF\_][a-zA-Z0-9\x80-\xFF\_][a-zA-Z0-9\x80-\xFF\_][a-zA-Z0-9\x80-\xFF\_][a-zA-Z0-9\x80-\xFF\_][a-zA-Z0-9\x80-\xFF\_]*$/",$password)) {
-                            $passwordError = "8 έως 20 χαρακτήρες ή αριθμούς και underscore"; 
+                            $passwordError = "8 έως 20 χαρακτήρες ή αριθμούς (χωρίς κενά & ειδικούς χαρακτήρες, εκτός απ' το underscore)"; 
                         }
                  }    
                  
@@ -59,7 +65,7 @@
                 else {
                     $email = test_input($_POST["email"]);
                     
-                    $query = "SELECT * FROM company WHERE email='$email'";
+                    $query = "SELECT * FROM company WHERE email='$email' AND id!='$id'";
                     $result = mysql_query($query) or die(mysql_error());
                     while($row=mysql_fetch_array($result)) {
                         $email_exists = $row['email'];
@@ -108,7 +114,7 @@
                  else {
                     $phone = test_input($_POST["phone"]);
                     
-                    $query = "SELECT * FROM company WHERE phone='$phone'";
+                    $query = "SELECT * FROM company WHERE phone='$phone' AND id!='$id'";
                     $result = mysql_query($query) or die(mysql_error());
                     while($row=mysql_fetch_array($result)) {
                         $phone_exists = $row['phone'];
@@ -141,13 +147,15 @@
                         $emailError==NULL && $comp_nameError==NULL && $passwordError==NULL && $display_nameError==NULL && 
                         $cityError==NULL && $addressError==NULL && $postal_codeError==NULL && $phoneError==NULL && $latitudeError==NULL && $longitudeError==NULL){
                     
-                        mysql_query("INSERT INTO company (comp_name, password, display_name, email, city, address, postal_code, phone, latitude, longitude)
-                            VALUES ('".$comp_name."', '".$password."', '".$display_name."', '".$email."', '".$city."', '".$address."', '".$postal_code."', '".$phone."', '".$latitude."', '".$longitude."')");
+                        mysql_query("UPDATE company SET comp_name='".$comp_name."', password='".$password."', display_name='".$display_name."', email='".$email."', city='".$city."', 
+                               address='".$address."', postal_code='".$postal_code."', phone='".$phone."', latitude='".$latitude."', longitude='".$longitude."' WHERE id=$id");
                         
-                      if (mysql_affected_rows()==1){                            
-                            $successful_register = "Επιτυχής εγγραφή";
+                      if (mysql_affected_rows()==1){
+                            session_start();
+                            $_SESSION['comp_name'] = $comp_name;
+                           // header( "Location: menu.php" );
+                            
+                            $successful_update = "Επιτυχής ενημέρωση";
                       }
                 }                
             }
-            
-            

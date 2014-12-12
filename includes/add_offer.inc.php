@@ -2,7 +2,6 @@
 
     include_once "db_connect.php";
     include_once "functions.php";
-    include_once "../views/add_offer.php";
     mysql_query("SET NAMES utf8");
     
     $offer_name = $offer_descr = $start_date = $end_date = $discount = $price = "";
@@ -19,7 +18,7 @@
             else {
                 $offer_name = test_input($_POST["offer_name"]);
                     if (!preg_match("/^[a-zA-Z0-9\x80-\xFF\!\%\&\-\+ ]*$/",$offer_name)) {
-                        $offer_nameError = "Μόνο χαρακτήρες, (!%&-+), αριθμοί και κενά επιτρέπονται"; 
+                        $offer_nameError = "Μόνο χαρακτήρες, αριθμοί και κενά επιτρέπονται"; 
                     }
             }
             
@@ -29,7 +28,7 @@
             } 
             else {
                     if (!preg_match("/^[a-zA-Z0-9\x80-\xFF\!\%\&\-\+ ]*$/",$offer_descr)) {
-                        $offer_descrError = "Μόνο χαρακτήρες, (!%&-+), αριθμοί και κενά επιτρέπονται"; 
+                        $offer_descrError = "Μόνο χαρακτήρες, αριθμοί και κενά επιτρέπονται"; 
                     }
             }      
             
@@ -70,15 +69,20 @@
                     if (!preg_match("/^[0-9.]*$/",$price)) {
                         $priceError = "Μόνο αριθμοί και η διαχωριστική . επιτρέπονται"; 
                     }
-            }            
+            }           
+            
+            session_start();
+            if(isset($_SESSION["comp_id"])) {
+                $comp_id = $_SESSION["comp_id"];
+            }
             
             
             if ($offer_name!=NULL && $start_date!=NULL && $end_date!=NULL && $discount!=NULL && $price!=NULL
                 && $offer_nameError==NULL && $offer_descrError==NULL && $start_dateError==NULL && $end_dateError==NULL &&
                     $discountError==NULL && $priceError==NULL){
                 
-                mysql_query("INSERT INTO offer (offer_name, cat_id, offer_descr, start_date, end_date, discount, price)
-                    VALUES ('".$offer_name."', '".$cat_id."', '".$offer_descr."', '".$start_date."', '".$end_date."', '".$discount."', '".$price."')");
+                mysql_query("INSERT INTO offer (offer_name, comp_id, cat_id, offer_descr, start_date, end_date, discount, price)
+                    VALUES ('".$offer_name."', '".$comp_id."', '".$cat_id."', '".$offer_descr."', '".$start_date."', '".$end_date."', '".$discount."', '".$price."')");
                 
                 if (mysql_affected_rows()==1){
                     $cat_id = 1;

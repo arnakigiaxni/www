@@ -9,12 +9,12 @@
     
     $company_table = mysql_query("CREATE TABLE company (
         id int(11) NOT NULL auto_increment,
-		comp_name varchar(255) NOT NULL,
-		display_name varchar(255) NOT NULL,
-		password varchar(255) NOT NULL,
-		address varchar(255) NOT NULL,
+	comp_name varchar(255) NOT NULL,
+	display_name varchar(255) NOT NULL,
+	password varchar(255) NOT NULL,
+	address varchar(255) NOT NULL,
         city varchar(255) NOT NULL,
-        postal_code int(11),
+        postal_code varchar(255),
         phone varchar(255) NOT NULL,
         email varchar(255) NOT NULL,
         latitude double NOT NULL,
