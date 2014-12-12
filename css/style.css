@@ -125,6 +125,7 @@ textarea {resize:none;
 #menu a:hover {
         color: white;
         background-color: #39B54A;
+        border-radius: 10px;
 }
 
 #here a{
