@@ -1,0 +1,59 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 15 Νοε 2014, 10:17:29 μμ
+    Author     : Stelios
+*/
+
+.error {color:red;}
+
+.success {color:green;}
+
+textarea {resize:none;
+	  text-align:left;}
+
+.right {
+    text-align: right;
+    float: right;
+}
+
+#graphics img {
+	display: block;
+	margin-top:2%;
+	margin-bottom:2%;
+	margin-left:auto;
+	margin-right:auto;
+	width: 66%;
+}
+
+
+#login {
+	background-image:url(../images/body.png);
+	background-repeat:no-repeat;
+	background-size:100%;
+	margin-top:2%;
+	margin-left:auto;
+	margin-right:auto;
+	width: 66%;
+	height: 900px;
+}
+
+#login form {
+	margin-left:10%;
+}
+
+#menu {
+}
+
+a {
+	font-family:"Palatino Linotype", "Book Antiqua", Palatino, serif;
+	font-size:20px;
+    text-decoration: none;
+	color: white;
+	margin-left:6%;
+	
+}
+
