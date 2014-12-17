@@ -2,9 +2,23 @@
     session_start();
     include '../config/db_connect.php';
     include '../models/category.php';
-    include 'menu.php';
 ?>
-<form action="../controllers/add_offer_controller.php" method="post" class="forms">
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="../../public/css/style.css" />
+        <link rel="icon" type="image/png" href="../../public/img/favicon.png" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Καταχώρηση προσφοράς</title>
+    </head>
+
+    <body>
+	<div id="graphics">
+        <a href="../controllers/index.php"><img src="../../public/img/header.png"/></a>
+        </div>
+    <?php
+        include 'menu.php';
+    ?>
+    <form action="../controllers/add_offer_controller.php" method="post" class="forms">
 	<label>Όνομα προσφοράς:</label><input type='text' name='offer_name' maxlength='30' id='add_offer_name' 
         <?php
         if (isset($_SESSION['offer_name'])){
@@ -100,8 +114,8 @@
         ?></span>
         <br />
         <br />
-    <input type="submit" value="Εγγραφή" class="buttons">
-</form>
+        <input type="submit" value="Εγγραφή" class="buttons">
+    </form>
 <?php
     if (isset($_SESSION['success'])){
         echo $_SESSION['success'];

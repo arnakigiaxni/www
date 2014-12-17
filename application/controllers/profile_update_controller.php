@@ -17,16 +17,16 @@
     $_SESSION['upd_latitude'] = $result['latitude'];  
     $_SESSION['upd_longitude'] = $result['longitude']; 
     
-    $_SESSION['upd_comp_name'] = filter_input(INPUT_POST, 'comp_name');
-    $_SESSION['upd_display_name'] = filter_input(INPUT_POST, 'display_name');
-    $_SESSION['upd_password'] = filter_input(INPUT_POST, 'password');
-    $_SESSION['upd_email'] = filter_input(INPUT_POST, 'email');
-    $_SESSION['upd_phone'] = filter_input(INPUT_POST, 'phone');
-    $_SESSION['upd_city'] = filter_input(INPUT_POST, 'city');
-    $_SESSION['upd_address'] = filter_input(INPUT_POST, 'address');  
-    $_SESSION['upd_postal_code'] = filter_input(INPUT_POST, 'postal_code');
-    $_SESSION['upd_latitude'] = filter_input(INPUT_POST, 'latitude');
-    $_SESSION['upd_longitude'] = filter_input(INPUT_POST, 'longitude');    
+    $_SESSION['comp_name'] = filter_input(INPUT_POST, 'comp_name');
+    $_SESSION['display_name'] = filter_input(INPUT_POST, 'display_name');
+    $_SESSION['password'] = filter_input(INPUT_POST, 'password');
+    $_SESSION['email'] = filter_input(INPUT_POST, 'email');
+    $_SESSION['phone'] = filter_input(INPUT_POST, 'phone');
+    $_SESSION['city'] = filter_input(INPUT_POST, 'city');
+    $_SESSION['address'] = filter_input(INPUT_POST, 'address');  
+    $_SESSION['postal_code'] = filter_input(INPUT_POST, 'postal_code');
+    $_SESSION['latitude'] = filter_input(INPUT_POST, 'latitude');
+    $_SESSION['longitude'] = filter_input(INPUT_POST, 'longitude');    
     
     if (!preg_match("/^[a-zA-Z0-9\x80-\xFF_][a-zA-Z0-9\x80-\xFF_][a-zA-Z0-9\x80-\xFF_][a-zA-Z0-9\x80-\xFF_][a-zA-Z0-9\x80-\xFF_][a-zA-Z0-9\x80-\xFF_][a-zA-Z0-9\x80-\xFF_][a-zA-Z0-9\x80-\xFF_]*$/",$_SESSION['upd_comp_name'])) {
          $_SESSION['error_comp_name'] = "8 έως 20 χαρακτήρες ή αριθμούς και underscore"; 

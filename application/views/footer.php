@@ -1,3 +1,4 @@
+        <div>    
             <p>version 0.3</p>
             <br />
             <span id="copyright">OfferFinder © 2014. All rights reserved.</span> 

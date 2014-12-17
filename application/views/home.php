@@ -6,4 +6,4 @@
 </div>
 <br />
 <br />
-<a href='add_offer.php'>Καταχώρηση</a>
+<a href='../views/add_offer.php'>Καταχώρηση</a>

@@ -1,17 +1,31 @@
 <?php
     include '../config/db_connect.php';
-    include 'menu.php';
     include_once "../../public/js/google_maps/gmaps_helper.php";
 ?>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="../../public/css/style.css" />
+        <link rel="icon" type="image/png" href="../../public/img/favicon.png" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Εγγραφή νέου χρήστη</title>
+    </head>
 
+    <body>
+	<div id="graphics">
+        <a href="../controllers/index.php"><img src="../../public/img/header.png"/></a>
+        </div>
+    <?php
+        include 'menu.php';
+    ?>
+        
     <form action="../controllers/register_controller.php" method="post" class="forms">
 	<label>Όνομα χρήστη:</label><input type='text' name='comp_name' maxlength='20' id='reg_username'
          <?php
             if (isset($_SESSION['reg_comp_name'])){
                 echo "value=" . $_SESSION['reg_comp_name'] ;
+                unset ($_SESSION['reg_comp_name']);
             }
-           unset ($_SESSION['reg_comp_name']);
-        ?> />                                  
+        ?> >                                  
         <span class='error'>* 
         <?php if (isset ($_SESSION['error_comp_name'])) {
                 echo $_SESSION['error_comp_name']; 
@@ -24,9 +38,9 @@
          <?php
             if (isset($_SESSION['reg_display_name'])){
                 echo "value=" . $_SESSION['reg_display_name'] ;
+                unset ($_SESSION['reg_display_name']);
             }
-           unset ($_SESSION['reg_display_name']);
-        ?> />        
+        ?> >        
         <span class='error'>* 
         <?php if (isset ($_SESSION['error_display_name'])) {
                 echo $_SESSION['error_display_name']; 
@@ -39,9 +53,9 @@
          <?php
             if (isset($_SESSION['reg_password'])){
                 echo "value=" . $_SESSION['reg_password'] ;
+                unset ($_SESSION['reg_password']);
             }
-           unset ($_SESSION['reg_password']);
-        ?> />                                       
+        ?> >                                       
         <span class='error'>* 
         <?php if (isset ($_SESSION['error_password'])) {
                 echo $_SESSION['error_password']; 
@@ -54,9 +68,9 @@
          <?php
             if (isset($_SESSION['reg_email'])){
                 echo "value=" . $_SESSION['reg_email'] ;
+                unset ($_SESSION['reg_email']);
             }
-           unset ($_SESSION['reg_email']);
-        ?> />                                     
+        ?> >                                     
         <span class='error'>* 
         <?php if (isset ($_SESSION['error_email'])) {
                 echo $_SESSION['error_email']; 
@@ -69,9 +83,9 @@
          <?php
             if (isset($_SESSION['reg_phone'])){
                 echo "value=" . $_SESSION['reg_phone'] ;
+                unset ($_SESSION['reg_phone']);
             }
-           unset ($_SESSION['reg_phone']);
-        ?> />                                        
+        ?> >                                        
         <span class='error'>* 
         <?php if (isset ($_SESSION['error_phone'])) {
                 echo $_SESSION['error_phone']; 
@@ -81,7 +95,7 @@
         <br />
         <br />      
         Πατήστε
-        <input type="button" value="εδώ" id="gmaps_button" onclick="window.open('../../public/js/google_maps/gmaps.php', 'gmaps', 'width=1000,height=600')" />
+        <input type="button" value="εδώ" id="gmaps_button" onclick="window.open('../../public/js/google_maps/gmaps.php', 'gmaps', 'width=1000,height=600')" >
              για να επιλέξετε την ακριβή τοποθεσία του καταστήματος σας στο χάρτη.
         <br />
         <br />   
@@ -89,9 +103,9 @@
          <?php
             if (isset($_SESSION['reg_city'])){
                 echo "value=" . $_SESSION['reg_city'] ;
+                unset ($_SESSION['reg_city']);
             }
-           unset ($_SESSION['reg_city']);
-        ?> />                                    
+        ?> >                                    
         <span class='error'>* 
         <?php if (isset ($_SESSION['error_city'])) {
                 echo $_SESSION['error_city']; 
@@ -104,9 +118,9 @@
          <?php
             if (isset($_SESSION['address'])){
                 echo "value=" . $_SESSION['reg_address'] ;
+                unset ($_SESSION['reg_address']);
             }
-           unset ($_SESSION['reg_address']);
-        ?> />                                         
+        ?> >                                         
         <span class='error'>* 
         <?php if (isset ($_SESSION['error_address'])) {
                 echo $_SESSION['error_address']; 
@@ -119,9 +133,9 @@
          <?php
             if (isset($_SESSION['reg_postal_code'])){
                 echo "value=" . $_SESSION['reg_postal_code'] ;
+                unset ($_SESSION['reg_postal_code']);
             }
-           unset ($_SESSION['reg_postal_code']);
-        ?> />                                                    
+        ?> >                                                    
         <span class='error'> 
         <?php if (isset ($_SESSION['error_postal_code'])) {
                 echo $_SESSION['error_postal_code']; 
@@ -134,9 +148,9 @@
          <?php
             if (isset($_SESSION['reg_latitude'])){
                 echo "value=" . $_SESSION['reg_latitude'] ;
+                unset ($_SESSION['reg_latitude']);
             }
-           unset ($_SESSION['reg_latitude']);
-        ?> />                                                 
+        ?> >                                                 
         <span class='error'>* 
         <?php if (isset ($_SESSION['error_latitude'])) {
                 echo $_SESSION['error_latitude']; 
@@ -149,9 +163,9 @@
          <?php
             if (isset($_SESSION['reg_longitude'])){
                 echo "value=" . $_SESSION['reg_longitude'] ;
+                unset ($_SESSION['reg_longitude']);
             }
-           unset ($_SESSION['reg_longitude']);
-        ?> />                                                
+        ?> >                                                
         <span class='error'>* 
         <?php if (isset ($_SESSION['error_longitude'])) {
                 echo $_SESSION['error_longitude']; 
@@ -160,7 +174,7 @@
         ?></span>
         <br />
         <br />
-        <input type="submit" value="Εγγραφή" class="buttons"/>
+        <input type="submit" value="Εγγραφή" class="buttons">
     </form>
 
 <?php
