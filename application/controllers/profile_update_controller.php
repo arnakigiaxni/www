@@ -3,6 +3,7 @@
     
     include '../config/db_connect.php';
     include '../models/company.php';
+    mysql_query("SET NAMES utf8");
     
     $comp_name = filter_input(INPUT_POST, 'comp_name');
     $display_name = filter_input(INPUT_POST, 'display_name');
@@ -15,6 +16,18 @@
     $latitude = filter_input(INPUT_POST, 'latitude');
     $longitude= filter_input(INPUT_POST, 'longitude');    
     
+    $result = AutofillUpdateProfileForm($_SESSION['id']);
+    $_SESSION['upd_id'] = $result['id'];
+    $_SESSION['upd_comp_name'] = 'aaaaaaaaaaa'; 
+    $_SESSION['upd_display_name'] = $result['display_name']; 
+    $_SESSION['upd_password'] = $result['password'];  
+    $_SESSION['upd_email'] = $result['email'];  
+    $_SESSION['upd_phone'] = $result['phone'];  
+    $_SESSION['upd_address'] = $result['address'];  
+    $_SESSION['upd_city'] = $result['city'];  
+    $_SESSION['upd_postal_code'] = $result['postal_code'];  
+    $_SESSION['upd_latitude'] = $result['latitude'];  
+    $_SESSION['upd_longitude'] = $result['longitude']; 
     
     if (!preg_match("/^[a-zA-Z0-9\x80-\xFF_][a-zA-Z0-9\x80-\xFF_][a-zA-Z0-9\x80-\xFF_][a-zA-Z0-9\x80-\xFF_][a-zA-Z0-9\x80-\xFF_][a-zA-Z0-9\x80-\xFF_][a-zA-Z0-9\x80-\xFF_][a-zA-Z0-9\x80-\xFF_]*$/",$comp_name)) {
          $_SESSION['error_comp_name'] = "8 έως 20 χαρακτήρες ή αριθμούς και underscore"; 

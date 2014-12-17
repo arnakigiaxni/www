@@ -45,7 +45,7 @@ textarea {resize:none;
 	margin-left:10%;
 }
 
-#menu {
+#menuu {
 	margin-left: 12%;  
 }
 
@@ -70,8 +70,8 @@ textarea {resize:none;
 a {
 	font-family:"Palatino Linotype", "Book Antiqua", Palatino, serif;
 	font-size:20px;
-    text-decoration: none;
-	color: white;
+        text-decoration: none;
+	color: black;
 	margin-left:6%;
 	
 }

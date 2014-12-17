@@ -57,14 +57,22 @@
         );
         return $query;
     }
-    
+
     function AutofillUpdateProfileForm ($userId) {
-        $result = mysql_query(
-                "SELECT *
-                 FROM 
+        $query = mysql_query(
+                "SELECT
+                    *
+                 FROM
                     company
-                 WHERE 
+                 WHERE
                     id = '$userId'"
         );
-        return $result;
+        
+        if (mysql_num_rows($query) == 1 ) {
+            $result = mysql_fetch_array($query);
+            return $result;
+        }
+        else {
+            return false;
+        }
     }
