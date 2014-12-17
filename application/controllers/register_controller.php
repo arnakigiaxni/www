@@ -86,7 +86,7 @@
         $new_company = AddCompany($_SESSION['reg_comp_name'], $_SESSION['reg_display_name'], $_SESSION['reg_password'],
                                   $_SESSION['reg_email'], $_SESSION['reg_phone'], $_SESSION['reg_city'], $_SESSION['reg_address'],  
                                   $_SESSION['reg_postal_code'], $_SESSION['reg_latitude'], $_SESSION['reg_longitude']);
-        $_SESSION['success'] = "Επιτυχής καταχώρηση!";
+        $_SESSION['success'] = "Επιτυχής εγγραφή!";
     }
     unset ($_SESSION['register_error']);   
     header( 'Location: ../views/register.php');

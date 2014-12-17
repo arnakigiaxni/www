@@ -6,10 +6,10 @@
     mysql_query("SET NAMES utf8");
     
     if (isset($_SESSION['id'])) {
-        include '../views/home.php';
+        include_once '../views/home.php';
     } 
     else {
-        include '../views/login.php';
+        include_once '../views/login.php';
     }
-    include '../views/footer.php';
+    include_once '../views/footer.php';
 ?>
