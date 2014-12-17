@@ -18,6 +18,7 @@
     
     if (!preg_match("/^[a-zA-Z0-9\x80-\xFF_][a-zA-Z0-9\x80-\xFF_][a-zA-Z0-9\x80-\xFF_][a-zA-Z0-9\x80-\xFF_][a-zA-Z0-9\x80-\xFF_][a-zA-Z0-9\x80-\xFF_][a-zA-Z0-9\x80-\xFF_][a-zA-Z0-9\x80-\xFF_]*$/",$comp_name)) {
          $_SESSION['error_comp_name'] = "8 έως 20 χαρακτήρες ή αριθμούς και underscore"; 
+         $_SESSION['register_error'] = true;
     }    
     else if (empty ($comp_name)){
         $_SESSION['error_comp_name'] = "Απαιτείται όνομα χρήστη";
@@ -26,6 +27,7 @@
     
     if (!preg_match("/^[a-zA-Z0-9\x80-\xFF\_][a-zA-Z0-9\x80-\xFF\_][a-zA-Z0-9\x80-\xFF\_][a-zA-Z0-9\x80-\xFF\_][a-zA-Z0-9\x80-\xFF\_][a-zA-Z0-9\x80-\xFF\_][a-zA-Z0-9\x80-\xFF\_][a-zA-Z0-9\x80-\xFF\_]*$/",$password)) {
          $_SESSION['error_password'] = "8 έως 20 χαρακτήρες ή αριθμούς και underscore"; 
+         $_SESSION['register_error'] = true;
     }   
     else if (empty ($password)){
         $_SESSION['error_password'] = "Απαιτείται κωδικός";
@@ -34,6 +36,7 @@
     
    if (!preg_match("/^[a-zA-Z0-9\x80-\xFF ]*$/",$display_name)) {
          $_SESSION['error_display_name'] = "Μόνο χαρακτήρες, αριθμοί και κενά επιτρέπονται"; 
+         $_SESSION['register_error'] = true;
    }    
    else if (empty ($display_name)){
         $_SESSION['error_display_name'] = "Απαιτείται επωνυμία καταστήματος";
@@ -42,6 +45,7 @@
 
    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
          $_SESSION['error_email'] = "Λανθασμένη μορφή email"; 
+         $_SESSION['register_error'] = true;
    }
    else if (empty ($email)){
         $_SESSION['error_email'] = "Απαιτείται email";
@@ -50,6 +54,7 @@
    
    if (!preg_match("/^[0-9]{10}$/",$phone)) {
          $_SESSION['error_phone'] = "Απαιτούνται ακριβώς 10 νούμερα"; 
+         $_SESSION['register_error'] = true;
    }    
    else if (empty ($phone)){
         $_SESSION['error_phone'] = "Απαιτείται τηλέφωνο";
@@ -80,4 +85,5 @@
         $new_company = AddCompany($comp_name, $display_name, $password, $email, $phone, $city, $address, $postal_code, $latitude, $longitude);
         $_SESSION['success'] = "Επιτυχής εγγραφή!";
     }
-    unset ($_SESSION['register_error']);    
+    unset ($_SESSION['register_error']);   
+    header( 'Location: ../views/register.php');

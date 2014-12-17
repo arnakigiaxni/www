@@ -78,7 +78,7 @@
     
     if (!isset($_SESSION['update_profile_error'])) {
         $update_profile = UpdateProfile($comp_name, $display_name, $password, $email, $phone, $city, $address, $postal_code, $latitude, $longitude, $_SESSION['id']);
-        $_SESSION['success'] = "Επιτυχής εγγραφή!";
+        $_SESSION['success'] = "Επιτυχής επεξεργασία!";
     }
     unset ($_SESSION['register_error']); 
     header( 'Location: ../views/profile_update_view.php');

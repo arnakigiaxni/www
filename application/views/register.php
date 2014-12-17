@@ -74,7 +74,7 @@
         <br />
         <br />
  	<label>Ταχυδρομικός κώδικας:</label><input type='text' name='postal_code' maxlength='6' readonly id='reg_postal_code'></input>
-        <span class='error'>* 
+        <span class='error'> 
         <?php if (isset ($_SESSION['error_postal_code'])) {
                 echo $_SESSION['error_postal_code']; 
                 unset ($_SESSION['error_postal_code']);
