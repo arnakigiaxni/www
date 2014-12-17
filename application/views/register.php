@@ -20,7 +20,7 @@
         include 'menu.php';
     ?>
         
-    <form action="../controllers/register_controller.php" method="post" class="forms">
+    <form action="../controllers/register_controller.php" method="post" class="forms" name='reg_form'>
 	<label>Όνομα χρήστη:</label><input type='text' name='comp_name' maxlength='20' id='reg_username'
          <?php
             if (isset($_SESSION['reg_comp_name'])){
@@ -118,7 +118,7 @@
         <br />
  	<label>Διεύθυνση:</label><input type='text' name='address' maxlength='50' readonly id='reg_address'
          <?php
-            if (isset($_SESSION['address'])){
+            if (isset($_SESSION['reg_address'])){
                 echo "value=" . $_SESSION['reg_address'] ;
                 unset ($_SESSION['reg_address']);
             }
