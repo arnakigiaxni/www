@@ -1,3 +1,8 @@
+<?php
+    if(!isset($_SESSION['id'])) {
+        header( "Location: ../controllers/index.php" );
+    }    
+?>
 <div id="add_offer">
     <br />
     <span class="right">Καλώς ήρθες, <?php echo $_SESSION['display_name']; ?><br />

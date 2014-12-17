@@ -3,6 +3,10 @@
     include_once '../config/db_connect.php';
     include_once '../models/category.php';
     mysql_query("SET NAMES utf8");
+    
+    if(!isset($_SESSION['id'])) {
+        header( "Location: ../controllers/index.php" );
+    }    
 ?>
 <html>
     <head>
