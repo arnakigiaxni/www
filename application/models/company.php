@@ -18,4 +18,23 @@
             return false;
         }
     }
+    
+    function AddCompany ($comp_name, $display_name, $password, $email, $phone, $city, $address, $postal_code, $latitude, $longitude){
+        $query = mysql_query(
+                "INSERT INTO
+                    company
+                SET
+                    comp_name = '$comp_name',
+                    display_name = '$display_name',
+                    password = '$password',
+                    email = '$email',
+                    phone = '$phone',
+                    city = '$city',
+                    address = '$address',
+                    postal_code = '$postal_code'
+                    latitude = '$latitude',
+                    longitude = '$longitude'"
+        );
+        return $query;
+    }
 ?>

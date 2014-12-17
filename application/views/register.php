@@ -5,7 +5,7 @@
 ?>
 
     <form action="../controllers/register_controller.php" method="post" class="forms">
-	<label>Όνομα χρήστη:</label><input type='text' name='comp_name' maxlength='20' id='comp_name'></input>
+	<label>Όνομα χρήστη:</label><input type='text' name='comp_name' maxlength='20' id='reg_username'></input>
         <span class='error'>* 
         <?php if (isset ($_SESSION['error_comp_name'])) {
                 echo $_SESSION['error_comp_name']; 
@@ -14,7 +14,7 @@
         ?></span>
         <br />
         <br />
-	<label>Επωνυμία καταστήματος:</label><input type='text' name='display_name' maxlength='20' id='display_name'></input>
+	<label>Επωνυμία καταστήματος:</label><input type='text' name='display_name' maxlength='20' id='reg_display'></input>
         <span class='error'>* 
         <?php if (isset ($_SESSION['error_display_name'])) {
                 echo $_SESSION['error_display_name']; 
@@ -23,7 +23,7 @@
         ?></span>
         <br />
         <br />
-	<label>Κωδικός:</label><input type='text' name='password' maxlength='20' id='password'></input>
+	<label>Κωδικός:</label><input type='text' name='password' maxlength='20' id='reg_password'></input>
         <span class='error'>* 
         <?php if (isset ($_SESSION['error_password'])) {
                 echo $_SESSION['error_password']; 
@@ -32,7 +32,7 @@
         ?></span>
         <br />
         <br />     
-	<label>Email:</label><input type='text' name='email' maxlength='25' id='email'></input>
+	<label>Email:</label><input type='text' name='email' maxlength='25' id='reg_email'></input>
         <span class='error'>* 
         <?php if (isset ($_SESSION['error_email'])) {
                 echo $_SESSION['error_email']; 
@@ -41,7 +41,7 @@
         ?></span>
         <br />
         <br />
- 	<label>Τηλέφωνο:</label><input type='text' name='phone' maxlength='10' id='phone'></input>
+ 	<label>Τηλέφωνο:</label><input type='text' name='phone' maxlength='10' id='reg_phone'></input>
         <span class='error'>* 
         <?php if (isset ($_SESSION['error_phone'])) {
                 echo $_SESSION['error_phone']; 
@@ -55,7 +55,7 @@
              για να επιλέξετε την ακριβή τοποθεσία του καταστήματος σας στο χάρτη.
         <br />
         <br />   
- 	<label>Πόλη:</label><input type='text' name='city' maxlength='25' readonly id='city'></input>
+ 	<label>Πόλη:</label><input type='text' name='city' maxlength='25' readonly id='reg_city'></input>
         <span class='error'>* 
         <?php if (isset ($_SESSION['error_city'])) {
                 echo $_SESSION['error_city']; 
@@ -73,7 +73,7 @@
         ?></span>
         <br />
         <br />
- 	<label>Ταχυδρομικός κώδικας:</label><input type='text' name='postal_code' maxlength='6' readonly id='postal_code'></input>
+ 	<label>Ταχυδρομικός κώδικας:</label><input type='text' name='postal_code' maxlength='6' readonly id='reg_postal_code'></input>
         <span class='error'>* 
         <?php if (isset ($_SESSION['error_postal_code'])) {
                 echo $_SESSION['error_postal_code']; 
