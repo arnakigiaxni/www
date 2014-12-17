@@ -11,7 +11,7 @@
             echo "value=" . $_SESSION['offer_name'] ;
         }
         unset ($_SESSION['offer_name']);
-        ?> />
+        ?> >
         <span class='error'>* 
         <?php if (isset ($_SESSION['error_name'])) {
                 echo $_SESSION['error_name']; 
@@ -44,7 +44,7 @@
                 echo "value=" . $_SESSION['start_date'] ;
             }
             unset ($_SESSION['start_date']);
-        ?> />
+        ?> >
         <img src="../../public/js/date_picker/images2/cal.gif" onclick="javascript:NewCssCal('demo1','yyyyMMdd','','','','','future')" style="cursor:pointer"/> 
         <span class='error'>* 
         <?php if (isset ($_SESSION['error_sdate'])) {
@@ -60,7 +60,7 @@
             echo "value=" . $_SESSION['end_date'] ;
         }
         unset ($_SESSION['end_date']);
-        ?> />
+        ?> >
         <img src="../../public/js/date_picker/images2/cal.gif" onclick="javascript:NewCssCal('demo2','yyyyMMdd','','','','','future')" style="cursor:pointer"/>   
         <span class='error'>* 
         <?php if (isset ($_SESSION['error_edate'])) {
@@ -76,7 +76,7 @@
             echo "value=" . $_SESSION['discount'] ;
         }
         unset ($_SESSION['discount']);
-        ?> />
+        ?> >
         <span class='error'>* 
         <?php if (isset ($_SESSION['error_discount'])) {
                 echo $_SESSION['error_discount']; 
@@ -91,7 +91,7 @@
             echo "value=" . $_SESSION['price'] ;
         }
         unset ($_SESSION['price']);
-        ?> />
+        ?> >
         <span class='error'>* 
         <?php if (isset ($_SESSION['error_price'])) {
                 echo $_SESSION['error_price']; 
