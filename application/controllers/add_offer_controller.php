@@ -1,9 +1,10 @@
 <?php
     session_start();
     
-    include '../config/db_connect.php';
-    include '../models/category.php';
-    include '../models/offer.php';
+    include_once '../config/db_connect.php';
+    include_once '../models/category.php';
+    include_once '../models/offer.php';
+    mysql_query("SET NAMES utf8");
     
     $_SESSION['offer_name'] = filter_input(INPUT_POST, 'offer_name');
     $_SESSION['offer_descr'] = filter_input(INPUT_POST, 'offer_descr');

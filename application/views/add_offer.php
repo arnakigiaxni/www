@@ -1,7 +1,8 @@
 <?php
     session_start();
-    include '../config/db_connect.php';
-    include '../models/category.php';
+    include_once '../config/db_connect.php';
+    include_once '../models/category.php';
+    mysql_query("SET NAMES utf8");
 ?>
 <html>
     <head>
@@ -114,7 +115,7 @@
         ?></span>
         <br />
         <br />
-        <input type="submit" value="Εγγραφή" class="buttons">
+        <input type="submit" value="Καταχώρηση" class="buttons">
     </form>
 <?php
     if (isset($_SESSION['success'])){

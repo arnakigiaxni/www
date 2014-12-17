@@ -1,8 +1,8 @@
 <?php
     session_start();
     
-    include '../config/db_connect.php';
-    include '../models/company.php';
+    include_once '../config/db_connect.php';
+    include_once '../models/company.php';
     mysql_query("SET NAMES utf8");
     
     $result = AutofillUpdateProfileForm($_SESSION['id']);

@@ -1,8 +1,10 @@
 <?php
     session_start();
-    include '../config/db_connect.php';
-    include '../views/header.php';
-    include '../views/menu.php';
+    include_once '../config/db_connect.php';
+    include_once '../views/header.php';
+    include_once '../views/menu.php';
+    mysql_query("SET NAMES utf8");
+    
     if (isset($_SESSION['id'])) {
         include '../views/home.php';
     } 

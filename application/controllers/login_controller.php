@@ -1,8 +1,10 @@
 <?php
     session_start();
     
-    include '../models/company.php';
-    include '../config/db_connect.php';
+    include_once '../models/company.php';
+    include_once '../config/db_connect.php';
+    mysql_query("SET NAMES utf8");
+    
     $username = filter_input(INPUT_POST, 'username');
     $password = filter_input(INPUT_POST, 'password');
     if( isset ($username, $password)){

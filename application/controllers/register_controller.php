@@ -1,8 +1,9 @@
 <?php
     session_start();
     
-    include '../config/db_connect.php';
-    include '../models/company.php';
+    include_once '../config/db_connect.php';
+    include_once '../models/company.php';
+    mysql_query("SET NAMES utf8");
     
     $_SESSION['reg_comp_name'] = filter_input(INPUT_POST, 'comp_name');
     $_SESSION['reg_display_name'] = filter_input(INPUT_POST, 'display_name');

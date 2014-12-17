@@ -1,6 +1,7 @@
 <?php
     session_start();
-    include '../config/db_connect.php';
+    include_once '../config/db_connect.php';
+    mysql_query("SET NAMES utf8");
 ?>
 
 <!DOCTYPE>
