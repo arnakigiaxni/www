@@ -1,6 +1,7 @@
 <?php
     session_start();
     include_once '../config/db_connect.php';
+    include_once "../../public/js/google_maps/gmaps_helper.php";
     mysql_query("SET NAMES utf8");
 ?>
 
@@ -20,7 +21,7 @@
     <?php
     include 'menu.php';
     ?>
-    <form action="../controllers/profile_update_controller.php" method="post" class="forms">
+    <form action="../controllers/profile_update_controller.php" method="post" class="forms" name='reg_form'>
         <label>Όνομα χρήστη:</label><input type='text' name='comp_name' maxlength='20' id='reg_username'
         <?php
             if (isset($_SESSION['upd_comp_name'])){

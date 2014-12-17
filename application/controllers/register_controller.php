@@ -17,24 +17,24 @@
     $_SESSION['reg_longitude'] = filter_input(INPUT_POST, 'longitude');    
     
     
-    if (!preg_match("/^[a-zA-Z0-9\x80-\xFF_][a-zA-Z0-9\x80-\xFF_][a-zA-Z0-9\x80-\xFF_][a-zA-Z0-9\x80-\xFF_][a-zA-Z0-9\x80-\xFF_][a-zA-Z0-9\x80-\xFF_][a-zA-Z0-9\x80-\xFF_][a-zA-Z0-9\x80-\xFF_]*$/",$_SESSION['reg_comp_name'])) {
+    if (empty ($_SESSION['reg_comp_name'])){
+        $_SESSION['error_comp_name'] = "Απαιτείται όνομα χρήστη";
+        $_SESSION['register_error'] = true;
+    }    
+    else if (!preg_match("/^[a-zA-Z0-9\x80-\xFF_][a-zA-Z0-9\x80-\xFF_][a-zA-Z0-9\x80-\xFF_][a-zA-Z0-9\x80-\xFF_][a-zA-Z0-9\x80-\xFF_][a-zA-Z0-9\x80-\xFF_][a-zA-Z0-9\x80-\xFF_][a-zA-Z0-9\x80-\xFF_]*$/",$_SESSION['reg_comp_name'])) {
          $_SESSION['error_comp_name'] = "8 έως 20 χαρακτήρες ή αριθμούς και underscore"; 
          $_SESSION['register_error'] = true;
     }    
-    else if (empty ($_SESSION['reg_comp_name'])){
-        $_SESSION['error_comp_name'] = "Απαιτείται όνομα χρήστη";
+   
+    if (empty ($_SESSION['reg_password'])){
+        $_SESSION['error_password'] = "Απαιτείται κωδικός";
         $_SESSION['register_error'] = true;
-    }
-    
-    if (!preg_match("/^[a-zA-Z0-9\x80-\xFF\_][a-zA-Z0-9\x80-\xFF\_][a-zA-Z0-9\x80-\xFF\_][a-zA-Z0-9\x80-\xFF\_][a-zA-Z0-9\x80-\xFF\_][a-zA-Z0-9\x80-\xFF\_][a-zA-Z0-9\x80-\xFF\_][a-zA-Z0-9\x80-\xFF\_]*$/",$_SESSION['reg_password'])) {
+    }    
+    else if (!preg_match("/^[a-zA-Z0-9\x80-\xFF\_][a-zA-Z0-9\x80-\xFF\_][a-zA-Z0-9\x80-\xFF\_][a-zA-Z0-9\x80-\xFF\_][a-zA-Z0-9\x80-\xFF\_][a-zA-Z0-9\x80-\xFF\_][a-zA-Z0-9\x80-\xFF\_][a-zA-Z0-9\x80-\xFF\_]*$/",$_SESSION['reg_password'])) {
          $_SESSION['error_password'] = "8 έως 20 χαρακτήρες ή αριθμούς και underscore"; 
          $_SESSION['register_error'] = true;
     }   
-    else if (empty ($_SESSION['reg_password'])){
-        $_SESSION['error_password'] = "Απαιτείται κωδικός";
-        $_SESSION['register_error'] = true;
-    }
-    
+  
    if (!preg_match("/^[a-zA-Z0-9\x80-\xFF ]*$/",$_SESSION['reg_display_name'])) {
          $_SESSION['error_display_name'] = "Μόνο χαρακτήρες, αριθμοί και κενά επιτρέπονται"; 
          $_SESSION['register_error'] = true;
@@ -44,24 +44,24 @@
         $_SESSION['register_error'] = true;
     }
 
-   if (!filter_var($_SESSION['reg_email'], FILTER_VALIDATE_EMAIL)) {
+   if (empty ($_SESSION['reg_email'])){
+        $_SESSION['error_email'] = "Απαιτείται email";
+        $_SESSION['register_error'] = true;
+   }    
+   else if (!filter_var($_SESSION['reg_email'], FILTER_VALIDATE_EMAIL)) {
          $_SESSION['error_email'] = "Λανθασμένη μορφή email"; 
          $_SESSION['register_error'] = true;
    }
-   else if (empty ($_SESSION['reg_email'])){
-        $_SESSION['error_email'] = "Απαιτείται email";
+
+   if (empty ($_SESSION['reg_phone'])){
+        $_SESSION['error_phone'] = "Απαιτείται τηλέφωνο";
         $_SESSION['register_error'] = true;
-   }
-   
-   if (!preg_match("/^[0-9]{10}$/",$_SESSION['reg_phone'])) {
+   }   
+   else if (!preg_match("/^[0-9]{10}$/",$_SESSION['reg_phone'])) {
          $_SESSION['error_phone'] = "Απαιτούνται ακριβώς 10 νούμερα"; 
          $_SESSION['register_error'] = true;
    }    
-   else if (empty ($_SESSION['reg_phone'])){
-        $_SESSION['error_phone'] = "Απαιτείται τηλέφωνο";
-        $_SESSION['register_error'] = true;
-    }  
-    
+      
     if (empty ($_SESSION['reg_city'])){
         $_SESSION['error_city'] = "Απαιτείται πόλη";
         $_SESSION['register_error'] = true;
