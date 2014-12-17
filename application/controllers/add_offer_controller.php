@@ -13,7 +13,7 @@
     $_SESSION['discount'] = filter_input(INPUT_POST, 'discount');
     $_SESSION['price'] = filter_input(INPUT_POST, 'price');
     
-    if (!preg_match("/^[a-zA-Z0-9\x80-\xFF\!\%\&\-\+ ]*/$",$_SESSION['offer_name'])) {
+    if (!preg_match("/^[a-zA-Z0-9\x80-\xFF\!\%\&\-\+ ]*$/",$_SESSION['offer_name'])) {
         $_SESSION['error_name'] = "Μόνο χαρακτήρες, αριθμοί και κενά επιτρέπονται"; 
         $_SESSION['offer_error'] = true;
     }
