@@ -1,3 +1,4 @@
+<div id='login'>
 <?php
     if(isset($_SESSION['id'])) {
         header( "Location: ../index.php" );
@@ -15,5 +16,6 @@
         unset($_SESSION['message']);
     }
 ?>
-<h5> Δεν είστε μέλος; Πατήστε <span id="here"><a href='register.php'>εδώ</a></span> για να εγγραφείτε. </h5>
+<h5> Δεν είστε μέλος; Πατήστε <span id="here"><a href='../views/register.php'>εδώ</a></span> για να εγγραφείτε. </h5>
+</div>
 

@@ -31,7 +31,7 @@ textarea {resize:none;
 
 
 #login {
-	background-image:url(../images/body.png);
+	background-image:url(../../public/img/body.png);
 	background-repeat:no-repeat;
 	background-size:100%;
 	margin-top:2%;
@@ -46,6 +46,25 @@ textarea {resize:none;
 }
 
 #menu {
+	margin-left: 12%;  
+}
+
+#menu a {
+	font-family:"Palatino Linotype", "Book Antiqua", Palatino, serif;
+	font-size:20px;
+        text-decoration: none;
+	color: #39B54A;
+        padding-top: 0.5%;
+        padding-bottom: 0.5%;
+        padding-right: 1%;
+        padding-left: 1%;
+        font-weight: bold;
+}
+
+#menu a:hover {
+        color: white;
+        background-color: #39B54A;
+        border-radius: 10px;
 }
 
 a {

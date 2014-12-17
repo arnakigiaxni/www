@@ -66,6 +66,5 @@
                  WHERE 
                     id = '$userId'"
         );
-        return $query;
+        return $result;
     }
-?>

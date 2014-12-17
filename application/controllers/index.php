@@ -1,8 +1,9 @@
 <?php
     session_start();
     include '../config/db_connect.php';
+    include '../views/header.php';
+    include '../views/menu.php';
     if (isset($_SESSION['id'])) {
-        include '../views/menu.php';
         include '../views/home.php';
     } 
     else {
