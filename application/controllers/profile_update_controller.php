@@ -101,4 +101,4 @@
         $_SESSION['success'] = "Επιτυχής επεξεργασία!";
     }
     unset ($_SESSION['update_profile_error'] ); 
-    header( 'Location: ../views/profile_update_view.php');
+    header( 'Location: ../views/profile_update.php');

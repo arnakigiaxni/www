@@ -31,7 +31,7 @@
                     phone = '$phone',
                     city = '$city',
                     address = '$address',
-                    postal_code = '$postal_code'
+                    postal_code = '$postal_code',
                     latitude = '$latitude',
                     longitude = '$longitude'"
         );

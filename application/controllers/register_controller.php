@@ -14,7 +14,7 @@
     $_SESSION['reg_address'] = filter_input(INPUT_POST, 'address');  
     $_SESSION['reg_postal_code'] = filter_input(INPUT_POST, 'postal_code');
     $_SESSION['reg_latitude'] = filter_input(INPUT_POST, 'latitude');
-    $_SESSION['reg_longitude'] = filter_input(INPUT_POST, 'longitude');    
+    $_SESSION['reg_longitude'] = filter_input(INPUT_POST, 'longitude');  
     
     
     if (empty ($_SESSION['reg_comp_name'])){
@@ -86,7 +86,7 @@
         $new_company = AddCompany($_SESSION['reg_comp_name'], $_SESSION['reg_display_name'], $_SESSION['reg_password'],
                                   $_SESSION['reg_email'], $_SESSION['reg_phone'], $_SESSION['reg_city'], $_SESSION['reg_address'],  
                                   $_SESSION['reg_postal_code'], $_SESSION['reg_latitude'], $_SESSION['reg_longitude']);
-        $_SESSION['success'] = "Επιτυχής εγγραφή!";
+        $_SESSION['success'] = "Επιτυχής καταχώρηση!";
     }
     unset ($_SESSION['register_error']);   
     header( 'Location: ../views/register.php');
