@@ -13,13 +13,14 @@
     </head>
 
     <body>
+       
 	<div id="graphics">
         <a href="../controllers/index.php"><img src="../../public/img/header.png"/></a>
         </div>
     <?php
         include 'menu.php';
     ?>
-        
+    <div id="register">
     <form action="../controllers/register_controller.php" method="post" class="forms" name='reg_form'>
 	<label>Όνομα χρήστη:</label><input type='text' name='comp_name' maxlength='20' id='reg_username'
          <?php
@@ -178,7 +179,7 @@
         <br />
         <input type="submit" value="Εγγραφή" class="buttons">
     </form>
-
+    </div>
 <?php
     if (isset($_SESSION['success'])){
         echo $_SESSION['success'];

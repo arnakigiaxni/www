@@ -1,52 +1,119 @@
-/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
-/* 
-    Created on : 15 Νοε 2014, 10:17:29 μμ
-    Author     : Stelios
-*/
+.error {
+        color:red;
+}
 
-.error {color:red;}
+.success {
+        color:green;
+}
 
-.success {color:green;}
-
-textarea {resize:none;
-	  text-align:left;}
+textarea {
+        resize:none;
+	text-align:left;
+}
 
 .right {
-    text-align: right;
-    float: right;
+        text-align: right;
+        float: right;
 }
 
 #graphics img {
 	display: block;
-	margin-top:2%;
-	margin-bottom:2%;
+	margin-top:1%;
+	margin-bottom:0.5%;
 	margin-left:auto;
 	margin-right:auto;
 	width: 66%;
 }
 
+#home {
+        background-image:url(../../public/img/body.png);
+	background-repeat:no-repeat;
+	background-size:100%;
+	margin-left:auto;
+	margin-right:auto;
+        margin-top: 0.5%;
+	width: 66%;
+	height: 630px;
+        color: white;
+        font-weight: bold;
+        font-size: 18px;
+        font-family: Georgia;
+}
+
+#home_body {
+        margin-left:6%;
+}
 
 #login {
 	background-image:url(../../public/img/body.png);
 	background-repeat:no-repeat;
 	background-size:100%;
-	margin-top:2%;
 	margin-left:auto;
 	margin-right:auto;
+        margin-top: 0.5%;
 	width: 66%;
-	height: 900px;
+	height: 630px;
+        color: white;
+        font-weight: bold;
+        font-size: 18px;
+        font-family: Georgia;
 }
 
 #login form {
-	margin-left:10%;
+	margin-left:6%;
+}
+
+#login h5 {
+        margin-left: 6%
+}
+
+#register {
+	background-image:url(../../public/img/body.png);
+	background-repeat:no-repeat;
+	background-size:100%;
+	margin-left:auto;
+	margin-right:auto;
+        margin-top: 0.5%;
+	width: 66%;
+	height: 630px;
+        color: white;
+        font-weight: bold;
+        font-size: 18px;
+        font-family: Georgia;
+}
+
+#add_offer {
+	background-image:url(../../public/img/body.png);
+	background-repeat:no-repeat;
+	background-size:100%;
+	margin-left:auto;
+	margin-right:auto;
+        margin-top: 0.5%;
+	width: 66%;
+	height: 630px;
+        color: white;
+        font-weight: bold;
+        font-size: 18px;
+        font-family: Georgia;
+}
+
+#update {
+	background-image:url(../../public/img/body.png);
+	background-repeat:no-repeat;
+	background-size:100%;
+	margin-left:auto;
+	margin-right:auto;
+        margin-top: 0.5%;
+	width: 66%;
+	height: 630px;
+        color: white;
+        font-weight: bold;
+        font-size: 18px;
+        font-family: Georgia;
 }
 
 #menu {
-	margin-left: 15%;  
+	margin-left: 14.8%;  
 }
 
 #menu a {
@@ -56,23 +123,97 @@ textarea {resize:none;
 	color: #39B54A;
         padding-top: 0.5%;
         padding-bottom: 0.5%;
-        padding-right: 1%;
-        padding-left: 1%;
+        padding-right: 2%;
+        padding-left: 2%;
         font-weight: bold;
+        margin-left:2.6%;
 }
 
 #menu a:hover {
         color: white;
         background-color: #39B54A;
-        border-radius: 10px;
+        border-radius: 3px;
 }
 
-a {
-	font-family:"Palatino Linotype", "Book Antiqua", Palatino, serif;
-	font-size:20px;
+#here a{
+        color: black;
         text-decoration: none;
-	color: black;
-	margin-left:6%;
-	
+}
+
+#here a:hover{
+        text-decoration: underline;
+}
+
+#button {
+        font-family: Georgia;
+        font-size: 14px;
+        font-weight: bold;
+        padding-left: 125px;
+        padding-right: 125px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        border-radius: 3px;
+        background-color: white;
+        border: solid 1px white;
+        color: #39B54A;
+        outline: none;
+}
+
+#button:hover {
+        color: white;
+        background-color: #39B54A;
+        cursor: pointer;
+        border: solid 1px white;
+}
+
+#password {
+        padding-top: 3px;
+        padding-bottom: 3px;
+        padding-left: 4px;
+        padding-right: 4px;
+        margin-left: 7%;
+        border-radius: 3px;
+        outline: none;
+        border: solid 1px white;
+        font-family: Georgia;
+}
+
+#username {
+        padding-top: 3px;
+        padding-bottom: 3px;
+        padding-left: 4px;
+        padding-right: 4px;
+        margin-left: 0%;
+        border-radius: 3px;
+        outline: none;
+        border: solid 1px white;
+        font-family: Georgia;
+}
+
+#footer {
+        display: inline;
+	background-repeat:no-repeat;
+	background-size:100%;
+	margin-left:17%;
+        margin-bottom: 0.5%;
+	width: 66%;
+        color: white;
+        font-weight: bold;
+        font-size: 16px;
+        font-family: Georgia;
+        background-color: #39B54A;
+        display: inline-block;
+        margin-top: 0.5%;
+        padding-top: 15px;
+        padding-bottom: 15px;
+}
+
+#copyright {
+        margin-left: 6%;
+}
+
+#version {
+        display: inline;
+        margin-left: 40%;
 }
 

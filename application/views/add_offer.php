@@ -23,6 +23,7 @@
     <?php
         include 'menu.php';
     ?>
+    <div id="add_offer">
     <form action="../controllers/add_offer_controller.php" method="post" class="forms">
 	<label>Όνομα προσφοράς:</label><input type='text' name='offer_name' maxlength='30' id='add_offer_name' 
         <?php
@@ -121,6 +122,7 @@
         <br />
         <input type="submit" value="Καταχώρηση" class="buttons">
     </form>
+    </div>
 <?php
     if (isset($_SESSION['success'])){
         echo $_SESSION['success'];
