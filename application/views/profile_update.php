@@ -31,7 +31,7 @@
         <label>Όνομα χρήστη:</label><input type='text' name='comp_name' maxlength='20' id='reg_username'
         <?php
             if (isset($_SESSION['comp_name'])){
-                echo "value=" . $_SESSION['comp_name'] ;
+                echo 'value="'.$_SESSION['comp_name'].'"';
                 unset ($_SESSION['comp_name']);
             }
         ?> > 
@@ -47,7 +47,7 @@
         <label>Επωνυμία καταστήματος:</label><input type='text' name='display_name' maxlength='20' id='reg_display'
         <?php
             if (isset($_SESSION['display_name_upd'])){
-                echo "value=" . $_SESSION['display_name_upd'] ;
+                echo 'value="'.$_SESSION['display_name_upd'].'"';
                 unset ($_SESSION['display_name_upd']);
             }            
         ?> >
@@ -63,7 +63,7 @@
         <label>Κωδικός:</label><input type='password' name='password' maxlength='20' id='reg_password'
         <?php
             if (isset($_SESSION['password'])){
-                echo "value=" . $_SESSION['password'] ;
+                echo 'value="'.$_SESSION['password'].'"';
                 unset ($_SESSION['password']);
             }
         ?> >
@@ -79,7 +79,7 @@
         <label>E-mail:</label><input type='text' name='email' maxlength='25' id='reg_email'
         <?php
             if (isset($_SESSION['email'])){
-                echo "value=" . $_SESSION['email'] ;
+                echo 'value="'.$_SESSION['email'].'"';
                 unset ($_SESSION['email']);
             }
         ?> >
@@ -95,7 +95,7 @@
         <label>Τηλέφωνο:</label><input type='text' name='phone' maxlength='10' id='reg_phone'
         <?php
             if (isset($_SESSION['phone'])){
-                echo "value=" . $_SESSION['phone'] ;
+                echo 'value="'.$_SESSION['phone'].'"';
                 unset ($_SESSION['phone']);
             }
         ?> >
@@ -116,7 +116,7 @@
         <label>Πόλη:</label><input type='text' name='city' maxlength='25' readonly id='reg_city'
         <?php
             if (isset($_SESSION['city'])){
-                echo "value=" . $_SESSION['city'] ;
+                echo 'value="'.$_SESSION['city'].'"';
                 unset ($_SESSION['city']);
             }
         ?> >
@@ -132,7 +132,7 @@
         <label>Διεύθυνση:</label><input type='text' name='address' maxlength='50' readonly id='reg_address'
         <?php
             if (isset($_SESSION['address'])){
-                echo "value=" . $_SESSION['address'];
+                echo 'value="'.$_SESSION['address'].'"';
                 unset ($_SESSION['address']);
             }
         ?> >
@@ -148,7 +148,7 @@
         <label>Ταχυδρομικός κώδικας:</label><input type='text' name='postal_code' maxlength='6' readonly id='reg_postal_code'
         <?php
             if (isset($_SESSION['postal_code'])){
-                echo "value=" . $_SESSION['postal_code'] ;
+                echo 'value="'.$_SESSION['postal_code'].'"';
                 unset ($_SESSION['postal_code']);
             }
         ?> >
@@ -164,7 +164,7 @@
         <label>Γεωγραφικό πλάτος:</label><input type='text' name='latitude' id='info_lat' readonly
         <?php
             if (isset($_SESSION['latitude'])){
-                echo "value=" . $_SESSION['latitude'] ;
+                echo 'value="'.$_SESSION['latitude'].'"';
                 unset ($_SESSION['latitude']);
             }
         ?> > 
@@ -180,7 +180,7 @@
         <label>Γεωγραφικό μήκος:</label><input type='text' name='longitude' id='info_lng' readonly
         <?php
             if (isset($_SESSION['longitude'])){
-                echo "value=" . $_SESSION['longitude'] ;
+                echo 'value="'.$_SESSION['longitude'].'"';
                 unset ($_SESSION['longitude']);
             }
         ?> > 

@@ -25,7 +25,7 @@
 	<label>Όνομα χρήστη:</label><input type='text' name='comp_name' maxlength='20' id='reg_username'
          <?php
             if (isset($_SESSION['reg_comp_name'])){
-                echo "value=" . $_SESSION['reg_comp_name'] ;
+                echo 'value="'.$_SESSION['reg_comp_name'].'"';
                 unset ($_SESSION['reg_comp_name']);
             }
         ?> >                                  
@@ -40,7 +40,7 @@
 	<label>Επωνυμία καταστήματος:</label><input type='text' name='display_name' maxlength='20' id='reg_display'
          <?php
             if (isset($_SESSION['reg_display_name'])){
-                echo "value=" . $_SESSION['reg_display_name'] ;
+                echo 'value="'.$_SESSION['reg_display_name'].'"';
                 unset ($_SESSION['reg_display_name']);
             }
         ?> >        
@@ -55,7 +55,7 @@
 	<label>Κωδικός:</label><input type='password' name='password' maxlength='20' id='reg_password'                                      
          <?php
             if (isset($_SESSION['reg_password'])){
-                echo "value=" . $_SESSION['reg_password'] ;
+                echo 'value="'.$_SESSION['reg_password'].'"';
                 unset ($_SESSION['reg_password']);
             }
         ?> >                                       
@@ -70,7 +70,7 @@
 	<label>Email:</label><input type='text' name='email' maxlength='25' id='reg_email'
          <?php
             if (isset($_SESSION['reg_email'])){
-                echo "value=" . $_SESSION['reg_email'] ;
+                echo 'value="'.$_SESSION['reg_email'].'"';
                 unset ($_SESSION['reg_email']);
             }
         ?> >                                     
@@ -85,7 +85,7 @@
  	<label>Τηλέφωνο:</label><input type='text' name='phone' maxlength='10' id='reg_phone'
          <?php
             if (isset($_SESSION['reg_phone'])){
-                echo "value=" . $_SESSION['reg_phone'] ;
+                echo 'value="'.$_SESSION['reg_phone'].'"';
                 unset ($_SESSION['reg_phone']);
             }
         ?> >                                        
@@ -105,7 +105,7 @@
  	<label>Πόλη:</label><input type='text' name='city' maxlength='25' readonly id='reg_city'
          <?php
             if (isset($_SESSION['reg_city'])){
-                echo "value=" . $_SESSION['reg_city'] ;
+                echo 'value="'.$_SESSION['reg_city'].'"';
                 unset ($_SESSION['reg_city']);
             }
         ?> >                                    
@@ -120,7 +120,7 @@
  	<label>Διεύθυνση:</label><input type='text' name='address' maxlength='50' readonly id='reg_address'
          <?php
             if (isset($_SESSION['reg_address'])){
-                echo "value=" . $_SESSION['reg_address'] ;
+                echo 'value="'.$_SESSION['reg_address'].'"';
                 unset ($_SESSION['reg_address']);
             }
         ?> >                                         
@@ -135,7 +135,7 @@
  	<label>Ταχυδρομικός κώδικας:</label><input type='text' name='postal_code' maxlength='6' readonly id='reg_postal_code'
          <?php
             if (isset($_SESSION['reg_postal_code'])){
-                echo "value=" . $_SESSION['reg_postal_code'] ;
+                echo 'value="'.$_SESSION['reg_postal_code'].'"';
                 unset ($_SESSION['reg_postal_code']);
             }
         ?> >                                                    
@@ -150,7 +150,7 @@
  	<label>Γεωγραφικό πλάτος:</label><input type='text' name='latitude' maxlength='30' readonly id='info_lat'
          <?php
             if (isset($_SESSION['reg_latitude'])){
-                echo "value=" . $_SESSION['reg_latitude'] ;
+                echo 'value="'.$_SESSION['reg_latitude'].'"';
                 unset ($_SESSION['reg_latitude']);
             }
         ?> >                                                 
@@ -165,7 +165,7 @@
  	<label>Γεωγραφικό μήκος:</label><input type='text' name='longitude' maxlength='30' readonly id='info_lng'
          <?php
             if (isset($_SESSION['reg_longitude'])){
-                echo "value=" . $_SESSION['reg_longitude'] ;
+                echo 'value="'.$_SESSION['reg_longitude'].'"';
                 unset ($_SESSION['reg_longitude']);
             }
         ?> >                                                
