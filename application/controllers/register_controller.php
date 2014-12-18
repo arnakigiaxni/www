@@ -25,6 +25,12 @@
          $_SESSION['error_comp_name'] = "8 έως 20 χαρακτήρες ή αριθμούς και underscore"; 
          $_SESSION['register_error'] = true;
     }    
+    
+    $comp_exists = CompNameExists($_SESSION['reg_comp_name']);
+    if ($comp_exists == TRUE){
+        $_SESSION['error_comp_name'] = "Το όνομα χρήστη υπάρχει ήδη";
+        $_SESSION['register_error'] = true;
+    }
    
     if (empty ($_SESSION['reg_password'])){
         $_SESSION['error_password'] = "Απαιτείται κωδικός";
@@ -53,6 +59,12 @@
          $_SESSION['register_error'] = true;
    }
 
+    $email_exists = EmailExists($_SESSION['reg_email']);
+    if ($email_exists == TRUE){
+        $_SESSION['error_email'] = "Το email υπάρχει ήδη";
+        $_SESSION['register_error'] = true;
+    }   
+
    if (empty ($_SESSION['reg_phone'])){
         $_SESSION['error_phone'] = "Απαιτείται τηλέφωνο";
         $_SESSION['register_error'] = true;
@@ -61,6 +73,12 @@
          $_SESSION['error_phone'] = "Απαιτούνται ακριβώς 10 νούμερα"; 
          $_SESSION['register_error'] = true;
    }    
+   
+    $phone_exists = PhoneExists($_SESSION['reg_phone']);
+    if ($phone_exists == TRUE){
+        $_SESSION['error_phone'] = "Το τηλέφωνο υπάρχει ήδη";
+        $_SESSION['register_error'] = true;
+    }    
       
     if (empty ($_SESSION['reg_city'])){
         $_SESSION['error_city'] = "Απαιτείται πόλη";

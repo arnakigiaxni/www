@@ -76,3 +76,58 @@
             return false;
         }
     }
+    
+    function CompNameExists ($comp_name){
+        $query = mysql_query(
+                "SELECT
+                    *
+                 FROM
+                    company
+                 WHERE
+                    comp_name = '$comp_name'"
+        );
+        
+         if (mysql_num_rows($query) == 1 ) {
+            return true;
+        }
+        else {
+            return false;
+        }          
+    }
+    
+
+    function EmailExists ($email){
+        $query = mysql_query(
+                "SELECT
+                    *
+                 FROM
+                    company
+                 WHERE
+                    email = '$email'"
+        );
+        
+         if (mysql_num_rows($query) == 1 ) {
+            return true;
+        }
+        else {
+            return false;
+        }          
+    }    
+    
+    function PhoneExists ($phone){
+        $query = mysql_query(
+                "SELECT
+                    *
+                 FROM
+                    company
+                 WHERE
+                    phone = '$phone'"
+        );
+        
+         if (mysql_num_rows($query) == 1 ) {
+            return true;
+        }
+        else {
+            return false;
+        }          
+    }
