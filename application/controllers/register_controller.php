@@ -26,7 +26,7 @@
          $_SESSION['register_error'] = true;
     }    
     
-    $comp_exists = CompNameExists($_SESSION['reg_comp_name']);
+    $comp_exists = RegisterCompNameExists($_SESSION['reg_comp_name']);
     if ($comp_exists == TRUE){
         $_SESSION['error_comp_name'] = "Το όνομα χρήστη υπάρχει ήδη";
         $_SESSION['register_error'] = true;
@@ -59,7 +59,7 @@
          $_SESSION['register_error'] = true;
    }
 
-    $email_exists = EmailExists($_SESSION['reg_email']);
+    $email_exists = RegisterEmailExists($_SESSION['reg_email']);
     if ($email_exists == TRUE){
         $_SESSION['error_email'] = "Το email υπάρχει ήδη";
         $_SESSION['register_error'] = true;
@@ -74,7 +74,7 @@
          $_SESSION['register_error'] = true;
    }    
    
-    $phone_exists = PhoneExists($_SESSION['reg_phone']);
+    $phone_exists = RegisterPhoneExists($_SESSION['reg_phone']);
     if ($phone_exists == TRUE){
         $_SESSION['error_phone'] = "Το τηλέφωνο υπάρχει ήδη";
         $_SESSION['register_error'] = true;

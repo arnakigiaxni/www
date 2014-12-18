@@ -77,7 +77,7 @@
         }
     }
     
-    function CompNameExists ($comp_name){
+    function RegisterCompNameExists ($comp_name){
         $query = mysql_query(
                 "SELECT
                     *
@@ -96,7 +96,7 @@
     }
     
 
-    function EmailExists ($email){
+    function RegisterEmailExists ($email){
         $query = mysql_query(
                 "SELECT
                     *
@@ -114,7 +114,7 @@
         }          
     }    
     
-    function PhoneExists ($phone){
+    function RegisterPhoneExists ($phone){
         $query = mysql_query(
                 "SELECT
                     *
@@ -122,6 +122,60 @@
                     company
                  WHERE
                     phone = '$phone'"
+        );
+        
+         if (mysql_num_rows($query) == 1 ) {
+            return true;
+        }
+        else {
+            return false;
+        }          
+    }
+    
+    function UpdateCompNameExists ($comp_name, $id){
+        $query = mysql_query(
+                "SELECT
+                    *
+                FROM 
+                    company 
+                WHERE 
+                    comp_name = '$comp_name' AND id != '$id'"
+                );
+        
+        if (mysql_num_rows($query) == 1 ) {
+            return true;
+        }
+        else {
+            return false;
+        }          
+    }
+    
+    function UpdateEmailExists ($email, $id){
+        $query = mysql_query(
+                "SELECT
+                    *
+                 FROM
+                    company
+                 WHERE
+                    email = '$email' AND id != '$id'"
+        );
+        
+        if (mysql_num_rows($query) == 1 ) {
+            return true;
+        }
+        else {
+            return false;
+        }          
+    }    
+    
+    function UpdatePhoneExists ($phone, $id){
+        $query = mysql_query(
+                "SELECT
+                    *
+                 FROM
+                    company
+                 WHERE
+                    phone = '$phone' AND id != '$id'"
         );
         
          if (mysql_num_rows($query) == 1 ) {

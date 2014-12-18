@@ -25,6 +25,12 @@
          $_SESSION['update_error'] = true;
     }    
    
+    $comp_exists = UpdateCompNameExists($_SESSION['comp_name'], $_SESSION['id']);
+    if ($comp_exists == TRUE){
+        $_SESSION['error_comp_name'] = "Το όνομα χρήστη υπάρχει ήδη";
+        $_SESSION['update_error'] = true;
+    }
+    
     if (empty ($_SESSION['password'])){
         $_SESSION['error_password'] = "Απαιτείται κωδικός";
         $_SESSION['update_error'] = true;
@@ -43,6 +49,12 @@
         $_SESSION['update_error'] = true;
     }
 
+    $email_exists = UpdateEmailExists($_SESSION['email'], $_SESSION['id']);
+    if ($email_exists == TRUE){
+        $_SESSION['error_email'] = "Το email υπάρχει ήδη";
+        $_SESSION['update_error'] = true;
+    } 
+    
    if (empty ($_SESSION['email'])){
         $_SESSION['error_email'] = "Απαιτείται email";
         $_SESSION['update_error'] = true;
@@ -52,6 +64,12 @@
          $_SESSION['update_error'] = true;
    }
 
+   $phone_exists = UpdatePhoneExists($_SESSION['phone'], $_SESSION['id']);
+    if ($phone_exists == TRUE){
+        $_SESSION['error_phone'] = "Το τηλέφωνο υπάρχει ήδη";
+        $_SESSION['update_error'] = true;
+    } 
+   
    if (empty ($_SESSION['phone'])){
         $_SESSION['error_phone'] = "Απαιτείται τηλέφωνο";
         $_SESSION['update_error'] = true;
