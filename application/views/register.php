@@ -51,7 +51,7 @@
         ?></span>
         <br />
         <br />
-	<label>Κωδικός:</label><input type='text' name='password' maxlength='20' id='reg_password'                                      
+	<label>Κωδικός:</label><input type='password' name='password' maxlength='20' id='reg_password'                                      
          <?php
             if (isset($_SESSION['reg_password'])){
                 echo "value=" . $_SESSION['reg_password'] ;
