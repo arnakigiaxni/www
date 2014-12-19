@@ -30,12 +30,16 @@
     <form action="../controllers/profile_update_controller.php" method="post" class="forms" name='reg_form'>
         <label>Όνομα χρήστη:</label><input type='text' name='comp_name' maxlength='20' id='reg_username'
         <?php
-            if (isset($_SESSION['comp_name'])){
+            if (isset($_SESSION['upd_comp_name'])){
+                echo 'value="'.$_SESSION['upd_comp_name'].'"';
+                unset ($_SESSION['upd_comp_name']);
+            }
+            else {
                 echo 'value="'.$_SESSION['comp_name'].'"';
-                unset ($_SESSION['comp_name']);
+                unset ($_SESSION['comp_name']);                
             }
         ?> > 
-        <span class='error'>
+        <span class='error'>*
         <?php 
             if (isset ($_SESSION['error_comp_name'])) {
                 echo $_SESSION['error_comp_name']; 
@@ -46,12 +50,16 @@
         <br />
         <label>Επωνυμία καταστήματος:</label><input type='text' name='display_name' maxlength='20' id='reg_display'
         <?php
-            if (isset($_SESSION['display_name_upd'])){
+            if (isset($_SESSION['upd_display_name_upd'])){
+                echo 'value="'.$_SESSION['upd_display_name_upd'].'"';
+                unset ($_SESSION['upd_display_name_upd']);
+            }
+            else {
                 echo 'value="'.$_SESSION['display_name_upd'].'"';
-                unset ($_SESSION['display_name_upd']);
+                unset ($_SESSION['display_name']);                
             }            
         ?> >
-        <span class='error'>
+        <span class='error'>*
         <?php 
             if (isset ($_SESSION['error_display_name'])) {
                 echo $_SESSION['error_display_name']; 
@@ -62,12 +70,16 @@
         <br />
         <label>Κωδικός:</label><input type='password' name='password' maxlength='20' id='reg_password'
         <?php
-            if (isset($_SESSION['password'])){
+            if (isset($_SESSION['upd_password'])){
+                echo 'value="'.$_SESSION['upd_password'].'"';
+                unset ($_SESSION['upd_password']);
+            }
+            else {
                 echo 'value="'.$_SESSION['password'].'"';
-                unset ($_SESSION['password']);
+                unset ($_SESSION['password']);                
             }
         ?> >
-        <span class='error'>
+        <span class='error'>*
         <?php 
             if (isset ($_SESSION['error_password'])) {
                 echo $_SESSION['error_password']; 
@@ -78,12 +90,16 @@
         <br />
         <label>E-mail:</label><input type='text' name='email' maxlength='25' id='reg_email'
         <?php
-            if (isset($_SESSION['email'])){
+            if (isset($_SESSION['upd_email'])){
+                echo 'value="'.$_SESSION['upd_email'].'"';
+                unset ($_SESSION['upd_email']);
+            }
+            else {
                 echo 'value="'.$_SESSION['email'].'"';
-                unset ($_SESSION['email']);
+                unset ($_SESSION['email']);                
             }
         ?> >
-        <span class='error'>
+        <span class='error'>*
         <?php 
             if (isset ($_SESSION['error_email'])) {
                 echo $_SESSION['error_email']; 
@@ -94,12 +110,16 @@
         <br />
         <label>Τηλέφωνο:</label><input type='text' name='phone' maxlength='10' id='reg_phone'
         <?php
-            if (isset($_SESSION['phone'])){
+            if (isset($_SESSION['upd_phone'])){
+                echo 'value="'.$_SESSION['upd_phone'].'"';
+                unset ($_SESSION['upd_phone']);
+            }
+            else {
                 echo 'value="'.$_SESSION['phone'].'"';
-                unset ($_SESSION['phone']);
+                unset ($_SESSION['phone']);                
             }
         ?> >
-        <span class='error'>
+        <span class='error'>*
         <?php 
             if (isset ($_SESSION['error_phone'])) {
                 echo $_SESSION['error_phone']; 
@@ -115,12 +135,16 @@
         <br /> 
         <label>Πόλη:</label><input type='text' name='city' maxlength='25' readonly id='reg_city'
         <?php
-            if (isset($_SESSION['city'])){
+            if (isset($_SESSION['upd_city'])){
+                echo 'value="'.$_SESSION['upd_city'].'"';
+                unset ($_SESSION['upd_city']);
+            }
+            else {
                 echo 'value="'.$_SESSION['city'].'"';
-                unset ($_SESSION['city']);
+                unset ($_SESSION['city']);                
             }
         ?> >
-        <span class='error'>
+        <span class='error'>*
         <?php 
             if (isset ($_SESSION['error_city'])) {
                 echo $_SESSION['error_city']; 
@@ -131,12 +155,16 @@
         <br />
         <label>Διεύθυνση:</label><input type='text' name='address' maxlength='50' readonly id='reg_address'
         <?php
-            if (isset($_SESSION['address'])){
+            if (isset($_SESSION['upd_address'])){
+                echo 'value="'.$_SESSION['upd_address'].'"';
+                unset ($_SESSION['upd_address']);
+            }
+            else {
                 echo 'value="'.$_SESSION['address'].'"';
-                unset ($_SESSION['address']);
+                unset ($_SESSION['address']);                
             }
         ?> >
-        <span class='error'>
+        <span class='error'>*
         <?php 
             if (isset ($_SESSION['error_address'])) {
                 echo $_SESSION['error_address']; 
@@ -147,9 +175,13 @@
         <br />
         <label>Ταχυδρομικός κώδικας:</label><input type='text' name='postal_code' maxlength='6' readonly id='reg_postal_code'
         <?php
-            if (isset($_SESSION['postal_code'])){
+            if (isset($_SESSION['upd_postal_code'])){
+                echo 'value="'.$_SESSION['upd_postal_code'].'"';
+                unset ($_SESSION['upd_postal_code']);
+            }
+            else {
                 echo 'value="'.$_SESSION['postal_code'].'"';
-                unset ($_SESSION['postal_code']);
+                unset ($_SESSION['postal_code']);                
             }
         ?> >
         <span class='error'>
@@ -163,12 +195,16 @@
         <br />
         <label>Γεωγραφικό πλάτος:</label><input type='text' name='latitude' id='info_lat' readonly
         <?php
-            if (isset($_SESSION['latitude'])){
+            if (isset($_SESSION['upd_latitude'])){
+                echo 'value="'.$_SESSION['upd_latitude'].'"';
+                unset ($_SESSION['upd_latitude']);
+            }
+            else {
                 echo 'value="'.$_SESSION['latitude'].'"';
-                unset ($_SESSION['latitude']);
+                unset ($_SESSION['latitude']);                
             }
         ?> > 
-        <span class='error'>
+        <span class='error'>*
         <?php 
             if (isset ($_SESSION['error_latitude'])) {
                 echo $_SESSION['error_latitude']; 
@@ -179,12 +215,16 @@
         <br />
         <label>Γεωγραφικό μήκος:</label><input type='text' name='longitude' id='info_lng' readonly
         <?php
-            if (isset($_SESSION['longitude'])){
+            if (isset($_SESSION['upd_longitude'])){
+                echo 'value="'.$_SESSION['upd_longitude'].'"';
+                unset ($_SESSION['upd_longitude']);
+            }
+            else {
                 echo 'value="'.$_SESSION['longitude'].'"';
-                unset ($_SESSION['longitude']);
+                unset ($_SESSION['longitude']);                
             }
         ?> > 
-        <span class='error'>
+        <span class='error'>*
         <?php 
             if (isset ($_SESSION['error_longitude'])) {
                 echo $_SESSION['error_longitude']; 
@@ -193,7 +233,7 @@
         ?></span>
         <br />
         <br />
-        <input type="submit" value="Εγγραφή" class="buttons"/>
+        <input type="submit" value="Επεξεργασία" class="buttons"/>
     </form>
     </div>
     <?php
