@@ -1,6 +1,7 @@
 <?php
         
-        function AddOffer($offer_name, $offer_descr, $cat_id, $start_date, $end_date, $discount, $price, $userId){
+        function AddOffer($offer_name, $offer_descr, $cat_id, $start_date, 
+                $end_date, $discount, $price, $userId){
             $query = mysql_query(
                     "INSERT INTO
                         offer
