@@ -7,15 +7,8 @@ mysql_query("SET NAMES utf8");
 
 class AddOfferController {
 
-    function addOffer() {
-        $offer_name = filter_input(INPUT_POST, 'offer_name');
-        $offer_descr = filter_input(INPUT_POST, 'offer_descr');
-        $cat_id = filter_input(INPUT_POST, 'cat_id');
-        $start_date = filter_input(INPUT_POST, 'start_date');
-        $end_date = filter_input(INPUT_POST, 'end_date');
-        $discount = filter_input(INPUT_POST, 'discount');
-        $price = filter_input(INPUT_POST, 'price');
-        
+    function addOffer($offer_name, $offer_descr, $cat_id, $start_date, 
+                    $end_date, $discount, $price) {        
         $code = new AddOfferController();
         
         $code_name = $code->offerName($offer_name);
@@ -29,7 +22,7 @@ class AddOfferController {
                 $code_end == 0 && $code_dis == 0 && $code_price == 0) {
             $new_offer = AddOffer($offer_name, $offer_descr, $cat_id, $start_date, 
                     $end_date, $discount, $price, $_SESSION['id']);
-            $result = array("success");
+            $result = array("1");
             return $result;
         } else {
             $error_codes = array($code_name, $code_descr, $code_start, $code_end, $code_dis, $code_price);
