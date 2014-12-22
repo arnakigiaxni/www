@@ -1,13 +1,20 @@
 <?php
-    session_start();
     include_once '../config/db_connect.php';
     include_once '../models/category.php';
+    include_once '../controllers/add_offer_controller.php';
     mysql_query("SET NAMES utf8");
-    
+
     if(!isset($_SESSION['id'])) {
         header( "Location: ../controllers/index.php" );
     }    
     
+    $frm = filter_input(INPUT_SERVER, 'PHP_SELF', FILTER_SANITIZE_STRING);
+    $srv = filter_input(INPUT_SERVER, 'REQUEST_METHOD', FILTER_SANITIZE_STRING);
+    if($srv == 'POST'){
+        $offer = new AddOfferController();
+        $offervar = $offer->addOffer();
+        print_r($offervar);
+    }
 ?>
 <html>
     <head>
@@ -25,14 +32,31 @@
         include 'menu.php';
     ?>
     <div id="add_offer">
-    <form action="../controllers/add_offer_controller.php" method="post" class="forms">
+    <form action="<?php echo $frm?>" method="post" class="forms">
 	<label>Όνομα προσφοράς:</label><input type='text' name='offer_name' maxlength='30' id='add_offer_name'>
-        <span class='error'>* 
+        <span class='error'>*
+        <?php
+            if (isset ($offervar)){
+                if (in_array("-1", $offervar)) {
+                    echo "Μόνο χαρακτήρες, αριθμοί και κενά επιτρέπονται"; 
+                } 
+                else if (in_array("-2", $offervar)) {
+                    echo "Απαιτείται όνομα προσφοράς";
+                }
+            }
+        ?>
         </span>
         <br />
         <br />
         <label>Περιγραφή προσφοράς:</label><textarea name='offer_descr' maxlength='160' id="add_offer_descr" rows='5' cols='57'></textarea>
         <span class='error'>
+        <?php
+            if (isset ($offervar)){
+                if (in_array("-3", $offervar)) {
+                    echo "Μόνο χαρακτήρες, αριθμοί και κενά επιτρέπονται"; 
+                } 
+            }
+        ?>
         </span>
         <br />
         <br />
@@ -43,27 +67,71 @@
         <label>Ημερομηνία έναρξης προσφοράς:</label><input type='text' id='demo1' maxlength='10' name='start_date' readonly size='10'>
         <img src="../../public/js/date_picker/images2/cal.gif" onclick="javascript:NewCssCal('demo1','yyyyMMdd','','','','','future')" style="cursor:pointer"/> 
         <span class='error'>* 
+        <?php
+            if (isset ($offervar)){
+                if (in_array("-4", $offervar)) {
+                    echo "Απαιτείται ημερομηνία έναρξης"; 
+                } 
+            }
+        ?>
         </span> 
         <br />
         <br />
         <label>Ημερομηνία λήξης προσφοράς:</label><input type='text' id='demo2' maxlength='10' name='end_date' readonly size='10'>
         <img src="../../public/js/date_picker/images2/cal.gif" onclick="javascript:NewCssCal('demo2','yyyyMMdd','','','','','future')" style="cursor:pointer"/>   
         <span class='error'>* 
+        <?php
+            if (isset ($offervar)){
+                if (in_array("-5", $offervar)) {
+                    echo "Απαιτείται ημερομηνία λήξης"; 
+                } 
+            }
+        ?>    
         </span>
         <br />
         <br />
         <label>Ποσοστό έκπτωσης (%):</label><input type='text' name='discount' maxlength='4' id="add_discount">
-        <span class='error'>* 
+        <span class='error'>*
+        <?php
+            if (isset ($offervar)){
+                if (in_array("-6", $offervar)) {
+                    echo "Μόνο αριθμοί και η διαχωριστική . επιτρέπονται";
+                } 
+                else if (in_array("-7", $offervar)) {
+                    echo "Εισάγετε μια έγκυρη τιμή";
+                }
+                else if (in_array("-8", $offervar)) {
+                    echo "Aπαιτείται ποσοστό προσφοράς";
+                }
+            }
+        ?>
         </span>
         <br />
         <br />
         <label>Τιμή μετά την έκπτωση (€):</label><input type='text' name='price' maxlength='8' id="add_price">
         <span class='error'>* 
+        <?php
+            if (isset ($offervar)){
+                if (in_array("-9", $offervar)) {
+                    echo "Μόνο αριθμοί και η διαχωριστική . επιτρέπονται";
+                } 
+                else if (in_array("-10", $offervar)) {
+                    echo "Απαιτείται τιμή";
+                }
+            }
+        ?>
         </span>
         <br />
         <br />
         <input type="submit" name="submit" value="Καταχώρηση" class="buttons">
     </form>
+<?php
+    if (isset ($offervar)){
+        if (in_array("success", $offervar)) {
+            echo "Η προσφορά καταχωρήθηκε επιτυχώς!";
+        }
+    }
+?>
     </div>
 <?php
     include 'footer.php';
