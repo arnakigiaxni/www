@@ -70,12 +70,11 @@
         </span>
         <br />
         <br />
-        <label>Περιγραφή προσφοράς:</label><textarea name='offer_descr' maxlength='160' id="add_offer_descr" rows='5' cols='57'><?php 
+        <label>Περιγραφή προσφοράς:<br /></label><textarea name='offer_descr' maxlength='160' id="add_offer_descr" rows='5' cols='57'><?php 
             if (isset ($offer_name)){
                 echo $offer_descr ;
             }
-        ?>
-        </textarea>
+        ?></textarea>
         <span class='error'>
         <?php
             if (isset ($offervar)){
