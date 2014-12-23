@@ -47,10 +47,31 @@ class AddOfferControllerTest extends PHPUnit_Framework_TestCase {
      * @todo   Implement testOfferName().
      */
     public function testOfferName() {
-        // Remove the following lines when you implement this test.
         $this->assertEquals(
                 0,
                 $this->object->offerName("testName")
+        );
+    }
+    
+    /**
+     * @covers AddOfferController::offerName
+     * @todo   Implement testOfferName().
+     */
+    public function testOfferNameInvalid() {
+        $this->assertEquals(
+                -1,
+                $this->object->offerName("!@#$%^")
+        );
+    }
+    
+    /**
+     * @covers AddOfferController::offerName
+     * @todo   Implement testOfferName().
+     */
+    public function testOfferNameEmpty() {
+        $this->assertEquals(
+                -2,
+                $this->object->offerName("")
         );
     }
 
@@ -59,10 +80,20 @@ class AddOfferControllerTest extends PHPUnit_Framework_TestCase {
      * @todo   Implement testOfferDescr().
      */
     public function testOfferDescr() {
-        // Remove the following lines when you implement this test.
         $this->assertEquals(
                 0,
                 $this->object->offerDescr("testDescr")
+        );
+    }
+    
+    /**
+     * @covers AddOfferController::offerDescr
+     * @todo   Implement testOfferDescr().
+    */
+    public function testOfferDescrInvalid() {
+        $this->assertEquals(
+                -3,
+                $this->object->offerDescr("!#$%^&*")
         );
     }
 
@@ -71,10 +102,20 @@ class AddOfferControllerTest extends PHPUnit_Framework_TestCase {
      * @todo   Implement testStartDate().
      */
     public function testStartDate() {
-        // Remove the following lines when you implement this test.
         $this->assertEquals(
                 0,
                 $this->object->startDate("2014-12-3")
+        );
+    }
+    
+    /**
+     * @covers AddOfferController::startDate
+     * @todo   Implement testStartDate().
+     */
+    public function testStartDateEmpty() {
+        $this->assertEquals(
+                -4,
+                $this->object->startDate("")
         );
     }
 
@@ -83,10 +124,20 @@ class AddOfferControllerTest extends PHPUnit_Framework_TestCase {
      * @todo   Implement testEndDate().
      */
     public function testEndDate() {
-        // Remove the following lines when you implement this test.
         $this->assertEquals(
                 0,
-                $this->object->startDate("2014-12-5")
+                $this->object->endDate("2014-12-5")
+        );
+    }
+    
+    /**
+     * @covers AddOfferController::endDate
+     * @todo   Implement testEndDate().
+     */
+    public function testEndDateEmpty() {
+        $this->assertEquals(
+                -5,
+                $this->object->endDate("")
         );
     }
 
@@ -95,10 +146,53 @@ class AddOfferControllerTest extends PHPUnit_Framework_TestCase {
      * @todo   Implement testDiscount().
      */
     public function testDiscount() {
-        // Remove the following lines when you implement this test.
         $this->assertEquals(
                 0,
-                $this->object->startDate("5")
+                $this->object->discount("5")
+        );
+    }
+    
+    /**
+     * @covers AddOfferController::discount
+     * @todo   Implement testDiscount().
+     */
+    public function testDiscountInvalid() {
+        $this->assertEquals(
+                -6,
+                $this->object->discount("something")
+        );
+    }
+    
+    /**
+     * @covers AddOfferController::discount
+     * @todo   Implement testDiscount().
+     */
+    public function testDiscountMoreThan100() {
+        $this->assertEquals(
+                "-7",
+                $this->object->discount("105")
+        );
+    }
+    
+    /**
+     * @covers AddOfferController::discount
+     * @todo   Implement testDiscount().
+     */
+    public function testDiscountLessThan0() {
+        $this->assertEquals(
+                -6,
+                $this->object->discount("-10")
+        );
+    }
+    
+    /**
+     * @covers AddOfferController::discount
+     * @todo   Implement testDiscount().
+     */
+    public function testDiscountEmpty() {
+        $this->assertEquals(
+                -8,
+                $this->object->discount("")
         );
     }
 
@@ -107,10 +201,42 @@ class AddOfferControllerTest extends PHPUnit_Framework_TestCase {
      * @todo   Implement testPrice().
      */
     public function testPrice() {
-        // Remove the following lines when you implement this test.
         $this->assertEquals(
                 0,
-                $this->object->startDate("3")
+                $this->object->price("3")
+        );
+    }
+    
+    /**
+     * @covers AddOfferController::price
+     * @todo   Implement testPrice().
+     */
+    public function testPriceInvalid() {
+        $this->assertEquals(
+                -9,
+                $this->object->price("something")
+        );
+    }
+    
+    /**
+     * @covers AddOfferController::price
+     * @todo   Implement testPrice().
+     */
+    public function testPriceLessThan0() {
+        $this->assertEquals(
+                -9,
+                $this->object->price("-10")
+        );
+    }
+    
+    /**
+     * @covers AddOfferController::price
+     * @todo   Implement testPrice().
+     */
+    public function testPriceEmpty() {
+        $this->assertEquals(
+                -10,
+                $this->object->price("")
         );
     }
 
