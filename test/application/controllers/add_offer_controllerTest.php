@@ -37,8 +37,8 @@ class AddOfferControllerTest extends PHPUnit_Framework_TestCase {
      */
     public function testaddOffer() {
         $this->assertEquals(
-                array("1")
-                , $this->object->addOffer("testName", "testDescr", "1", "2014-12-3", "2014-12-5", "5", "3")
+                array("1"), 
+                $this->object->addOffer("testName", "testDescr", "1", "2014-12-3", "2014-12-5", "5", "3")
         );
     }
 

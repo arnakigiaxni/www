@@ -15,7 +15,12 @@
                         discount = '$discount',
                         price = '$price'"
             );
-            return $query;
+            if (mysql_affected_rows()==1){
+                return $query;
+            }
+            else{
+                return false;
+            }
         }
         
     

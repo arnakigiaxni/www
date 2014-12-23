@@ -17,15 +17,20 @@ class AddOfferController {
         $code_end = $code->endDate($end_date);
         $code_dis = $code->discount($discount);
         $code_price = $code->price($price);
+        $error_codes = array($code_name, $code_descr, $code_start, $code_end, $code_dis, $code_price);
         
         if ($code_name == 0 && $code_descr == 0 && $code_start == 0 &&
                 $code_end == 0 && $code_dis == 0 && $code_price == 0) {
             $new_offer = AddOffer($offer_name, $offer_descr, $cat_id, $start_date, 
-                    $end_date, $discount, $price, $_SESSION["id"]);
-            $result = array("1");
-            return $result;
+                    $end_date, $discount, $price, $_SESSION['id']);
+            if ($new_offer != false){
+                $result = array("1");
+                return $result;
+            }
+            else{
+                return $error_codes;
+            }
         } else {
-            $error_codes = array($code_name, $code_descr, $code_start, $code_end, $code_dis, $code_price);
             return $error_codes;
         }
     }
