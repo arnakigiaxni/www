@@ -1,7 +1,7 @@
 <?php
-    include_once '../config/db_connect.php';
-    include_once '../models/category.php';
-    include_once '../controllers/add_offer_controller.php';
+    include_once '/../config/db_connect.php';
+    include_once '/../models/category.php';
+    include_once '/../controllers/add_offer_controller.php';
     mysql_query("SET NAMES utf8");
 
     if(!isset($_SESSION['id'])) {

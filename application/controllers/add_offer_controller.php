@@ -1,8 +1,8 @@
-<?php
-session_start();    
-include_once '../config/db_connect.php';
-include_once '../models/category.php';
-include_once '../models/offer.php';
+<?php    
+include_once '/../config/db_connect.php';
+include_once '/../models/category.php';
+include_once '/../models/offer.php';
+session_start();
 mysql_query("SET NAMES utf8");
 
 class AddOfferController {
@@ -17,7 +17,6 @@ class AddOfferController {
         $code_end = $code->endDate($end_date);
         $code_dis = $code->discount($discount);
         $code_price = $code->price($price);
-        //$id = $_SESSION["id"];
         
         if ($code_name == 0 && $code_descr == 0 && $code_start == 0 &&
                 $code_end == 0 && $code_dis == 0 && $code_price == 0) {
