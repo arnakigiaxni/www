@@ -76,7 +76,7 @@ class AddOfferController {
     function discount ($discount) {
         if (!preg_match("/^[0-9.]*$/", $discount)) {
             $errorCode = -6;
-        } else if ($discount > 100 || $discount < 0) {
+        } else if ($discount > 100) {
             $errorCode = -7;
         } else if (empty($discount)) {
            $errorCode = -8;
