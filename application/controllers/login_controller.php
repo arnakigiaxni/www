@@ -1,20 +1,24 @@
 <?php
-    session_start();
     
     include_once '../models/company.php';
     include_once '../config/db_connect.php';
     mysql_query("SET NAMES utf8");
     
-    $username = filter_input(INPUT_POST, 'username');
-    $password = filter_input(INPUT_POST, 'password');
-    if( isset ($username, $password)){
-        $userId = AuthenticateUser($username, $password);
-        if ($userId !== false) {
-            $_SESSION['id'] = $userId['id'];  
-            $_SESSION['display_name'] = $userId['display_name'];
+    class loginController {
+        
+        function login($username, $password) {
+
+                $result = AuthenticateUser($username, $password);
+                if ($result !== false) {
+                    $_SESSION['id'] = $result['id'];  
+                    $_SESSION['display_name'] = $result['display_name'];
+                    
+                    return -1;
+                }
+                else {
+                    return -2;
+                }
+
         }
-        else {
-            $_SESSION['message'] = "Το όνομα χρήστη ή ο κωδικός σας είναι λάθος, προσπαθήστε ξανά.";
-        }
-        header( 'Location: index.php');
-    }
+    
+}
