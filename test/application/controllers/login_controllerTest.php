@@ -38,5 +38,53 @@ class loginControllerTest extends PHPUnit_Framework_TestCase {
                 $this->object->login("carrefour", "12345")
         );
     }
-
+    
+    /**
+     * @covers loginController::login
+     * @todo   Implement testLogin().
+     */
+    public function testEmptyLogin() {
+        // Remove the following lines when you implement this test.
+        $this->assertEquals(
+                -2,
+                $this->object->login("", "")
+        );
+    }
+    
+    /**
+     * @covers loginController::login
+     * @todo   Implement testLogin().
+     */
+    public function testLoginWithOnlyUsername() {
+        // Remove the following lines when you implement this test.
+        $this->assertEquals(
+                -2,
+                $this->object->login("carrefour", "")
+        );
+    }
+    
+    /**
+     * @covers loginController::login
+     * @todo   Implement testLogin().
+     */
+    public function testLoginWithOnlyPassword() {
+        // Remove the following lines when you implement this test.
+        $this->assertEquals(
+                -2,
+                $this->object->login("", "12345")
+        );
+    }
+    
+    /**
+     * @covers loginController::login
+     * @todo   Implement testLogin().
+     */
+    public function testLoginInvalid() {
+        // Remove the following lines when you implement this test.
+        $this->assertEquals(
+                -2,
+                $this->object->login("!@#$%^", "!@#$%^")
+        );
+    }
+    
 }

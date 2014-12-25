@@ -1,7 +1,7 @@
 <?php
     
-    include_once '../models/company.php';
-    include_once '../config/db_connect.php';
+    include_once '/../models/company.php';
+    include_once '/../config/db_connect.php';
     mysql_query("SET NAMES utf8");
     
     class loginController {

@@ -5,23 +5,17 @@
 
     $result = null;
     
-    
-    
     $frm = filter_input(INPUT_SERVER, 'PHP_SELF', FILTER_SANITIZE_STRING);
     $srv = filter_input(INPUT_SERVER, 'REQUEST_METHOD', FILTER_SANITIZE_STRING);
     if($srv == 'POST'){
         $username = filter_input(INPUT_POST, 'username');
         $password = filter_input(INPUT_POST, 'password');
-        
         $controller = new loginController();
         $result = $controller->login($username, $password);
-        header( 'Location: index.php');
-        
+        if ($result == -1) {
+            header( 'Location: index.php');
+        }
     }
-    
-    
-    
-    
 ?>
 
 <div id='login'>
