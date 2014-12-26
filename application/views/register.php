@@ -1,8 +1,28 @@
 <?php
     session_start();
-    include_once '../config/db_connect.php';
-    include_once "../../public/js/google_maps/gmaps_helper.php";
+    include_once "/../config/db_connect.php";
+    include_once "/../../public/js/google_maps/gmaps_helper.php";
+    include_once '/../controllers/register_controller.php';
     mysql_query("SET NAMES utf8");
+    
+    $frm = filter_input(INPUT_SERVER, 'PHP_SELF', FILTER_SANITIZE_STRING);
+    $srv = filter_input(INPUT_SERVER, 'REQUEST_METHOD', FILTER_SANITIZE_STRING);
+    if($srv == 'POST'){
+        $comp_name = filter_input(INPUT_POST, 'comp_name');
+        $display_name = filter_input(INPUT_POST, 'display_name');
+        $password = filter_input(INPUT_POST, 'password');
+        $email = filter_input(INPUT_POST, 'email');
+        $phone = filter_input(INPUT_POST, 'phone');
+        $city = filter_input(INPUT_POST, 'city');
+        $address = filter_input(INPUT_POST, 'address');
+        $postal_code = filter_input(INPUT_POST, 'postal_code');
+        $latitude = filter_input(INPUT_POST, 'latitude');
+        $longitude = filter_input(INPUT_POST, 'longitude');
+        
+        $register = new RegisterController();
+        $registervar = $register->addCompany($comp_name, $display_name, $password, $email, $phone, $city, $address, 
+                $postal_code, $latitude, $longitude);
+    }    
 ?>
 <html>
     <head>
@@ -21,80 +41,124 @@
         include 'menu.php';
     ?>
     <div id="register">
-    <form action="../controllers/register_controller.php" method="post" class="forms" name='reg_form'>
+    <?php
+        if (isset ($registervar)){
+            if (in_array("1", $registervar)) {
+                echo "Επιτυχής εγγραφή!";
+                unset($comp_name, $display_name, $password, $email, $phone, $city, $address, 
+                $postal_code, $latitude, $longitude);
+            }
+        }
+    ?>    
+        
+    <form action="<?php echo $frm?>" method="post" class="forms" name='reg_form'>
 	<label>Όνομα χρήστη:</label><input type='text' name='comp_name' maxlength='20' id='reg_username'
-         <?php
-            if (isset($_SESSION['reg_comp_name'])){
-                echo 'value="'.$_SESSION['reg_comp_name'].'"';
-                unset ($_SESSION['reg_comp_name']);
+        <?php
+            if (isset ($comp_name)){
+                echo "value=" . $comp_name;
             }
-        ?> >                                  
+        ?> >                                 
         <span class='error'>* 
-        <?php if (isset ($_SESSION['error_comp_name'])) {
-                echo $_SESSION['error_comp_name']; 
-                unset ($_SESSION['error_comp_name']);
+        <?php
+            if (isset ($registervar)){
+                if (in_array("-1", $registervar)) {
+                    echo "Απαιτείται όνομα χρήστη"; 
+                } 
+                else if (in_array("-2", $registervar)) {
+                    echo "8 έως 20 χαρακτήρες ή αριθμούς και underscore";
+                }
+                else if (in_array("-3", $registervar)) {
+                    echo "Το όνομα χρήστη υπάρχει ήδη";
+                }
             }
-        ?></span>
+        ?>
+        </span>
         <br />
         <br />
 	<label>Επωνυμία καταστήματος:</label><input type='text' name='display_name' maxlength='20' id='reg_display'
-         <?php
-            if (isset($_SESSION['reg_display_name'])){
-                echo 'value="'.$_SESSION['reg_display_name'].'"';
-                unset ($_SESSION['reg_display_name']);
+        <?php
+            if (isset ($display_name)){
+                echo "value=" . $display_name;
             }
-        ?> >        
+        ?> >         
         <span class='error'>* 
-        <?php if (isset ($_SESSION['error_display_name'])) {
-                echo $_SESSION['error_display_name']; 
-                unset ($_SESSION['error_display_name']);
+        <?php
+            if (isset ($registervar)){
+                if (in_array("-4", $registervar)) {
+                    echo "Απαιτείται επωνυμία καταστήματος"; 
+                } 
+                else if (in_array("-5", $registervar)) {
+                    echo "Μόνο χαρακτήρες, αριθμοί και κενά επιτρέπονται";
+                }
             }
-        ?></span>
+        ?>
+        </span>
         <br />
         <br />
 	<label>Κωδικός:</label><input type='password' name='password' maxlength='20' id='reg_password'                                      
-         <?php
-            if (isset($_SESSION['reg_password'])){
-                echo 'value="'.$_SESSION['reg_password'].'"';
-                unset ($_SESSION['reg_password']);
+        <?php
+            if (isset ($password)){
+                echo "value=" . $password;
             }
-        ?> >                                       
+        ?> >                                        
         <span class='error'>* 
-        <?php if (isset ($_SESSION['error_password'])) {
-                echo $_SESSION['error_password']; 
-                unset ($_SESSION['error_password']);
+        <?php
+            if (isset ($registervar)){
+                if (in_array("-6", $registervar)) {
+                    echo "Απαιτείται κωδικός πρόσβασης"; 
+                } 
+                else if (in_array("-7", $registervar)) {
+                    echo "8 έως 20 χαρακτήρες ή αριθμούς και underscore";
+                }
             }
-        ?></span>
+        ?>
+        </span>
         <br />
         <br />     
 	<label>Email:</label><input type='text' name='email' maxlength='25' id='reg_email'
          <?php
-            if (isset($_SESSION['reg_email'])){
-                echo 'value="'.$_SESSION['reg_email'].'"';
-                unset ($_SESSION['reg_email']);
+            if (isset ($email)){
+                echo "value=" . $email;
             }
         ?> >                                     
         <span class='error'>* 
-        <?php if (isset ($_SESSION['error_email'])) {
-                echo $_SESSION['error_email']; 
-                unset ($_SESSION['error_email']);
+        <?php
+            if (isset ($registervar)){
+                if (in_array("-8", $registervar)) {
+                    echo "Απαιτείται email"; 
+                } 
+                else if (in_array("-9", $registervar)) {
+                    echo "Λανθασμένη μορφή email";
+                }
+                else if (in_array("-10", $registervar)) {
+                    echo "Το email υπάρχει ήδη";
+                }
             }
-        ?></span>
+        ?>
+        </span>
         <br />
         <br />
  	<label>Τηλέφωνο:</label><input type='text' name='phone' maxlength='10' id='reg_phone'
          <?php
-            if (isset($_SESSION['reg_phone'])){
-                echo 'value="'.$_SESSION['reg_phone'].'"';
-                unset ($_SESSION['reg_phone']);
+            if (isset ($phone)){
+                echo "value=" . $phone;
             }
         ?> >                                        
         <span class='error'>* 
-        <?php if (isset ($_SESSION['error_phone'])) {
-                echo $_SESSION['error_phone']; 
-                unset ($_SESSION['error_phone']);
+        <?php
+            if (isset ($registervar)){
+                if (in_array("-11", $registervar)) {
+                    echo "Απαιτείται τηλέφωνο"; 
+                } 
+                else if (in_array("-12", $registervar)) {
+                    echo "Απαιτούνται ακριβώς 10 ψηφία";
+                }
+                else if (in_array("-13", $registervar)) {
+                    echo "Το τηλέφωνο υπάρχει ήδη";
+                }
             }
-        ?></span>
+        ?>
+        </span>
         <br />
         <br />      
         Πατήστε
@@ -104,86 +168,83 @@
         <br />   
  	<label>Πόλη:</label><input type='text' name='city' maxlength='25' readonly id='reg_city'
          <?php
-            if (isset($_SESSION['reg_city'])){
-                echo 'value="'.$_SESSION['reg_city'].'"';
-                unset ($_SESSION['reg_city']);
+            if (isset ($city)){
+                echo "value=" . $city;
             }
         ?> >                                    
         <span class='error'>* 
-        <?php if (isset ($_SESSION['error_city'])) {
-                echo $_SESSION['error_city']; 
-                unset ($_SESSION['error_city']);
+        <?php
+            if (isset ($registervar)){
+                if (in_array("-14", $registervar)) {
+                    echo "Απαιτείται πόλη"; 
+                } 
             }
-        ?></span>
+        ?>
+        </span>
         <br />
         <br />
  	<label>Διεύθυνση:</label><input type='text' name='address' maxlength='50' readonly id='reg_address'
          <?php
-            if (isset($_SESSION['reg_address'])){
-                echo 'value="'.$_SESSION['reg_address'].'"';
-                unset ($_SESSION['reg_address']);
+            if (isset ($address)){
+                echo "value=" . $address;
             }
         ?> >                                         
         <span class='error'>* 
-        <?php if (isset ($_SESSION['error_address'])) {
-                echo $_SESSION['error_address']; 
-                unset ($_SESSION['error_address']);
+       <?php
+            if (isset ($registervar)){
+                if (in_array("-15", $registervar)) {
+                    echo "Απαιτείται διεύθυνση"; 
+                } 
             }
-        ?></span>
+        ?>
+        </span>
         <br />
         <br />
  	<label>Ταχυδρομικός κώδικας:</label><input type='text' name='postal_code' maxlength='6' readonly id='reg_postal_code'
          <?php
-            if (isset($_SESSION['reg_postal_code'])){
-                echo 'value="'.$_SESSION['reg_postal_code'].'"';
-                unset ($_SESSION['reg_postal_code']);
+            if (isset ($postal_code)){
+                echo "value=" . $postal_code;
             }
         ?> >                                                    
-        <span class='error'> 
-        <?php if (isset ($_SESSION['error_postal_code'])) {
-                echo $_SESSION['error_postal_code']; 
-                unset ($_SESSION['error_postal_code']);
-            }
-        ?></span>
         <br />
         <br />
  	<label>Γεωγραφικό πλάτος:</label><input type='text' name='latitude' maxlength='30' readonly id='info_lat'
          <?php
-            if (isset($_SESSION['reg_latitude'])){
-                echo 'value="'.$_SESSION['reg_latitude'].'"';
-                unset ($_SESSION['reg_latitude']);
+            if (isset ($latitude)){
+                echo "value=" . $latitude;
             }
         ?> >                                                 
         <span class='error'>* 
-        <?php if (isset ($_SESSION['error_latitude'])) {
-                echo $_SESSION['error_latitude']; 
-                unset ($_SESSION['error_latitude']);
+       <?php
+            if (isset ($registervar)){
+                if (in_array("-16", $registervar)) {
+                    echo "Απαιτείται γεωγραφικό πλάτος"; 
+                } 
             }
-        ?></span>
+        ?>
+        </span>
         <br />
         <br />
  	<label>Γεωγραφικό μήκος:</label><input type='text' name='longitude' maxlength='30' readonly id='info_lng'
          <?php
-            if (isset($_SESSION['reg_longitude'])){
-                echo 'value="'.$_SESSION['reg_longitude'].'"';
-                unset ($_SESSION['reg_longitude']);
+            if (isset ($longitude)){
+                echo "value=" . $longitude;
             }
         ?> >                                                
         <span class='error'>* 
-        <?php if (isset ($_SESSION['error_longitude'])) {
-                echo $_SESSION['error_longitude']; 
-                unset ($_SESSION['error_longitude']);
+       <?php
+            if (isset ($registervar)){
+                if (in_array("-17", $registervar)) {
+                    echo "Απαιτείται γεωγραφικό μήκος"; 
+                } 
             }
-        ?></span>
+        ?>
+        </span>
         <br />
         <br />
-        <input type="submit" value="Εγγραφή" class="buttons">
+        <input type="submit" value="Εγγραφή" class="buttons" name="submit">
     </form>
     </div>
 <?php
-    if (isset($_SESSION['success'])){
-        echo $_SESSION['success'];
-        unset ($_SESSION['success']);
-    }
     include 'footer.php';
 ?>        

@@ -35,7 +35,12 @@
                         latitude = '$latitude',
                         longitude = '$longitude'"
             );
-            return $query;
+            if (mysql_affected_rows()==1){
+                return $query;
+            }
+            else{
+                return false;
+            }
         }
 
         function UpdateProfile ($comp_name, $display_name, $password, $email, $phone, $city, $address, $postal_code, $latitude, $longitude, $userId){
