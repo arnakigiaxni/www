@@ -5,108 +5,164 @@
     include_once '../models/company.php';
     mysql_query("SET NAMES utf8");
      
-    $_SESSION['upd_comp_name'] = filter_input(INPUT_POST, 'comp_name');
-    $_SESSION['upd_display_name_upd'] = filter_input(INPUT_POST, 'display_name');
-    $_SESSION['upd_password'] = filter_input(INPUT_POST, 'password');
-    $_SESSION['upd_email'] = filter_input(INPUT_POST, 'email');
-    $_SESSION['upd_phone'] = filter_input(INPUT_POST, 'phone');
-    $_SESSION['upd_city'] = filter_input(INPUT_POST, 'city');
-    $_SESSION['upd_address'] = filter_input(INPUT_POST, 'address');  
-    $_SESSION['upd_postal_code'] = filter_input(INPUT_POST, 'postal_code');
-    $_SESSION['upd_latitude'] = filter_input(INPUT_POST, 'latitude');
-    $_SESSION['upd_longitude'] = filter_input(INPUT_POST, 'longitude');    
+    class ProfileUpdateController {
     
-    if (empty ($_SESSION['upd_comp_name'])){
-        $_SESSION['error_comp_name'] = "Απαιτείται όνομα χρήστη";
-        $_SESSION['update_error'] = true;
-    }    
-    else if (!preg_match("/^[a-zA-Z0-9\x80-\xFF_][a-zA-Z0-9\x80-\xFF_][a-zA-Z0-9\x80-\xFF_][a-zA-Z0-9\x80-\xFF_][a-zA-Z0-9\x80-\xFF_][a-zA-Z0-9\x80-\xFF_][a-zA-Z0-9\x80-\xFF_][a-zA-Z0-9\x80-\xFF_]*$/",$_SESSION['upd_comp_name'])) {
-         $_SESSION['error_comp_name'] = "8 έως 20 χαρακτήρες ή αριθμούς και underscore"; 
-         $_SESSION['update_error'] = true;
-    }    
-   
-    $comp_exists = UpdateCompNameExists($_SESSION['upd_comp_name'], $_SESSION['id']);
-    if ($comp_exists == TRUE){
-        $_SESSION['error_comp_name'] = "Το όνομα χρήστη υπάρχει ήδη";
-        $_SESSION['update_error'] = true;
+        function profileUpdate($comp_name, $display_name, $password, $email, $phone, 
+                $city, $address, $postal_code, $latitude, $longitude){
+            $code = new ProfileUpdateController();  
+                
+            $code_comp = $code->compName($comp_name);
+            $code_display = $code->displayName($display_name);
+            $code_password = $code->password($password);
+            $code_email = $code->email($email);
+            $code_phone = $code->phone($phone);
+            $code_city = $code->city($city);
+            $code_address = $code->address($address);
+            $code_postal = $code->postalCode($postal_code);
+            $code_latitude = $code->latitude($latitude);
+            $code_longitude = $code->longitude($longitude);  
+            $error_codes = array($code_comp, $code_display, $code_password, $code_email,
+                $code_phone, $code_city, $code_address, $code_postal, $code_latitude, $code_longitude);
+                
+            if ($code_comp == 0 && $code_display == 0 && $code_password == 0
+                    && $code_email == 0 && $code_phone == 0 && $code_city == 0
+                    && $code_address == 0 && $code_postal == 0 && $code_latitude == 0
+                    && $code_longitude == 0){
+                $update = UpdateProfile($comp_name, $display_name, $password, 
+                        $email, $phone, $city, $address, $postal_code, $latitude, 
+                        $longitude, $_SESSION['id']);
+                $result = array("1");
+                return $result;
+            }
+            else {
+                return $error_codes;
+            }
+        }
+        
+        function compName($comp_name){
+            $exists = UpdateCompNameExists($comp_name, $_SESSION['id']);
+            if ($exists != false){
+                $error_code = -1;
+            }
+            else if (empty ($comp_name)){
+                $error_code = -2;
+            }    
+            else if (!preg_match("/^[a-zA-Z0-9\x80-\xFF_][a-zA-Z0-9\x80-\xFF_][a-zA-Z0-9\x80-\xFF_][a-zA-Z0-9\x80-\xFF_][a-zA-Z0-9\x80-\xFF_][a-zA-Z0-9\x80-\xFF_][a-zA-Z0-9\x80-\xFF_][a-zA-Z0-9\x80-\xFF_]*$/",$comp_name)) {
+                $error_code = -3;
+            }
+            else {
+                $error_code = 0;
+            }
+            return $error_code;
+        }
+        
+        function displayName($display_name){
+            if (empty ($display_name)){
+                $error_code = -4;
+            }
+            else if (!preg_match("/^[a-zA-Z0-9\x80-\xFF ]*$/",$display_name)) {
+                $error_code = -5;
+            }
+            else {
+                $error_code = 0;
+            }
+            return $error_code;
+        }
+        
+        function password($password) {
+            if (empty ($password)){
+                $error_code = -6;
+            }    
+            else if (!preg_match("/^[a-zA-Z0-9\x80-\xFF\_][a-zA-Z0-9\x80-\xFF\_][a-zA-Z0-9\x80-\xFF\_][a-zA-Z0-9\x80-\xFF\_][a-zA-Z0-9\x80-\xFF\_][a-zA-Z0-9\x80-\xFF\_][a-zA-Z0-9\x80-\xFF\_][a-zA-Z0-9\x80-\xFF\_]*$/",$password)) {
+                $error_code = -7;
+            }   
+            else {
+                $error_code = 0;
+            }
+            return $error_code;
+        }
+        
+        function email($email){
+            $exists = UpdateEmailExists($email, $_SESSION['id']);
+            if ($exists != false){
+                $error_code = -8;
+            }
+            else if (empty ($email)){
+                $error_code = -9;
+            }    
+            else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                $error_code = -10;
+            }
+            else {
+                $error_code = 0;
+            }
+            return $error_code;
+        }
+        
+        function phone($phone){
+            $exists = UpdatePhoneExists($phone, $_SESSION['id']);
+            if ($exists != false){
+                $error_code = -11;
+            }
+            else if (empty ($phone)){
+                $error_code = -12;
+            }   
+            else if (!preg_match("/^[0-9]{10}$/",$phone)) {
+                $error_code = -13;
+            }    
+            else {
+                $error_code = 0;
+            }
+            return $error_code;
+        }
+        
+        function city($city){
+            if (empty ($city)){
+                $error_code = -14;
+            }
+            else {
+                $error_code = 0;
+            }
+            return $error_code;
+        }   
+       
+        function address($address){
+            if (empty ($address)){
+                $error_code = -15;
+            }
+            else {
+                $error_code = 0;
+            }
+            return $error_code;
+        }
+        
+        function postalCode ($postal_code){
+            if (empty ($postal_code)){
+                $error_code = -16;
+            }
+            else {
+                $error_code = 0;
+            }
+            return $error_code;
+        }
+        
+        function latitude ($latitude){
+            if (empty ($latitude)){
+                $error_code = -17;
+            }
+            else {
+                $error_code = 0;
+            }
+            return $error_code;
+        }
+        
+        function longitude($longitude){
+            if (empty ($longitude)){
+                $error_code = -18;
+            }
+            else {
+                $error_code = 0;
+            }
+            return $error_code;
+        }
     }
-    
-    if (empty ($_SESSION['upd_password'])){
-        $_SESSION['error_password'] = "Απαιτείται κωδικός";
-        $_SESSION['update_error'] = true;
-    }    
-    else if (!preg_match("/^[a-zA-Z0-9\x80-\xFF\_][a-zA-Z0-9\x80-\xFF\_][a-zA-Z0-9\x80-\xFF\_][a-zA-Z0-9\x80-\xFF\_][a-zA-Z0-9\x80-\xFF\_][a-zA-Z0-9\x80-\xFF\_][a-zA-Z0-9\x80-\xFF\_][a-zA-Z0-9\x80-\xFF\_]*$/",$_SESSION['upd_password'])) {
-         $_SESSION['error_password'] = "8 έως 20 χαρακτήρες ή αριθμούς και underscore"; 
-         $_SESSION['update_error'] = true;
-    }   
-  
-    
-   if (empty ($_SESSION['upd_display_name_upd'])){
-        $_SESSION['error_display_name'] = "Απαιτείται επωνυμία καταστήματος";
-        $_SESSION['update_error'] = true;
-    }
-   else if (!preg_match("/^[a-zA-Z0-9\x80-\xFF ]*$/",$_SESSION['upd_display_name_upd'])) {
-         $_SESSION['error_display_name'] = "Μόνο χαρακτήρες, αριθμοί και κενά επιτρέπονται"; 
-         $_SESSION['update_error'] = true;
-   }     
-    
-   if (empty ($_SESSION['upd_email'])){
-        $_SESSION['error_email'] = "Απαιτείται email";
-        $_SESSION['update_error'] = true;
-   }    
-   else if (!filter_var($_SESSION['upd_email'], FILTER_VALIDATE_EMAIL)) {
-         $_SESSION['error_email'] = "Λανθασμένη μορφή email"; 
-         $_SESSION['update_error'] = true;
-   }
-   
-    $email_exists = UpdateEmailExists($_SESSION['upd_email'], $_SESSION['id']);
-    if ($email_exists == TRUE){
-        $_SESSION['error_email'] = "Το email υπάρχει ήδη";
-        $_SESSION['update_error'] = true;
-    } 
-   
-   if (empty ($_SESSION['upd_phone'])){
-        $_SESSION['error_phone'] = "Απαιτείται τηλέφωνο";
-        $_SESSION['update_error'] = true;
-   }   
-   else if (!preg_match("/^[0-9]{10}$/",$_SESSION['upd_phone'])) {
-         $_SESSION['error_phone'] = "Απαιτούνται ακριβώς 10 νούμερα"; 
-         $_SESSION['update_error'] = true;
-   }    
-   
-   $phone_exists = UpdatePhoneExists($_SESSION['upd_phone'], $_SESSION['id']);
-    if ($phone_exists == TRUE){
-        $_SESSION['error_phone'] = "Το τηλέφωνο υπάρχει ήδη";
-        $_SESSION['update_error'] = true;
-    }
-      
-    if (empty ($_SESSION['upd_city'])){
-        $_SESSION['error_city'] = "Απαιτείται πόλη";
-        $_SESSION['update_error'] = true;
-    }
-    
-    if (empty ($_SESSION['upd_address'])){
-        $_SESSION['error_address'] = "Απαιτείται διεύθυνση";
-        $_SESSION['update_error'] = true;
-    }
-    
-    if (empty ($_SESSION['upd_latitude'])){
-        $_SESSION['error_latitude'] = "Απαιτείται γεωγραφικό πλάτος";
-        $_SESSION['update_error'] = true;
-    }
-    
-    if (empty ($_SESSION['upd_longitude'])){
-        $_SESSION['error_longitude'] = "Απαιτείται γεωγραφικό μήκος";
-        $_SESSION['update_error'] = true;
-    }
-    
-    if (!isset($_SESSION['update_error'])) {
-        $update_profile = UpdateProfile($_SESSION['upd_comp_name'] , $_SESSION['upd_display_name_upd'] , 
-            $_SESSION['upd_password'] , $_SESSION['upd_email'] , $_SESSION['upd_phone'] , $_SESSION['upd_city'] , 
-            $_SESSION['upd_address'] , $_SESSION['upd_postal_code'] , $_SESSION['upd_latitude'] , 
-            $_SESSION['upd_longitude'], $_SESSION['id']);
-        $_SESSION['display_name'] = $_SESSION['display_name_upd'];
-        $_SESSION['success'] = "Επιτυχής επεξεργασία!";
-    }
-    unset ($_SESSION['update_error'] ); 
-    header( 'Location: ../views/profile_update.php');
