@@ -53,8 +53,7 @@
                 $errorCode = -2;
             } else if ($comp_exists == TRUE){
                 $errorCode = -3;
-            }
-            else {
+            } else {
                 $errorCode = 0;
             }
             return $errorCode;
@@ -90,8 +89,7 @@
                 $errorCode = -9;
             } else if ($email_exists == TRUE){
                 $errorCode = -10;
-            }
-            else {
+            } else {
                 $errorCode = 0;
             }
             return $errorCode;
@@ -105,8 +103,7 @@
                 $errorCode = -12;
             } else if ($phone_exists == TRUE){
                 $errorCode = -13;
-            }
-            else {
+            } else {
                 $errorCode = 0;
             }
             return $errorCode;

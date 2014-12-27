@@ -1,6 +1,5 @@
 <?php
 include_once "/../../../application/controllers/login_controller.php";
-include_once "/../../../application/models/company.php";
 
 
 class loginControllerTest extends PHPUnit_Framework_TestCase {

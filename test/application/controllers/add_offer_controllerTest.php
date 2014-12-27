@@ -1,7 +1,6 @@
 <?php
 session_start();
 include_once "/../../../application/controllers/add_offer_controller.php";
-include_once "/../../../application/models/offer.php";
 $_SESSION["id"] = 2;
 
 
