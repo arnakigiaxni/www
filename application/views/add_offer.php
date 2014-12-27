@@ -18,6 +18,8 @@
         $end_date = filter_input(INPUT_POST, 'end_date');
         $discount = filter_input(INPUT_POST, 'discount');
         $price = filter_input(INPUT_POST, 'price');
+        $image = filter_input(INPUT_POST, 'image');
+        $path = "/../../public/uploads/";
         
         $offer = new AddOfferController();
         $offervar = $offer->addOffer($offer_name, $offer_descr, $cat_id, $start_date, 
@@ -49,7 +51,7 @@
         }
     }
     ?>
-    <form action="<?php echo $frm?>" method="post" class="forms">
+    <form action="<?php echo $frm?>" method="post" class="forms" enctype="multipart/form-data">
 	<label>Όνομα προσφοράς:</label><input type='text' name='offer_name' maxlength='30' id='add_offer_name'
         <?php
             if (isset ($offer_name)){
@@ -167,6 +169,9 @@
             }
         ?>
         </span>
+        <br />
+        <br />
+        <label>Εικόνα προσφοράς: </label><input type="file" name="image" id="image" accept="image/*" />
         <br />
         <br />
         <input type="submit" name="submit" value="Καταχώρηση" class="buttons">

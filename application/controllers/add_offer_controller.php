@@ -2,6 +2,7 @@
 include_once '/../config/db_connect.php';
 include_once '/../models/category.php';
 include_once '/../models/offer.php';
+include_once "image_manipulator.php";
 session_start();
 mysql_query("SET NAMES utf8");
 
@@ -95,5 +96,25 @@ class AddOfferController {
             $errorCode = 0;
         }
         return $errorCode;
+    }
+    
+    function image ($image){
+        if ($image == NULL) {
+            $image = "no_image.jpg";        
+        }
+        
+        $validExtensions = array('.jpg', '.jpeg', '.gif', '.png', '.JPG', '.JPEG', '.GIF', '.PNG');
+        $fileExtension = strrchr($_FILES['fileToUpload']['name'], ".");
+        
+        if (in_array($fileExtension, $validExtensions)) {
+            $newNamePrefix = time() . '_';
+            $manipulator = new ImageManipulator($_FILES['fileToUpload']['tmp_name']);
+            $newImage = $manipulator->resample(100, 100);
+            $manipulator->save('uploads/' . $newNamePrefix . $_FILES['fileToUpload']['name']);
+        
+            $filename = $newNamePrefix . $_FILES['fileToUpload']['name'];
+    } else {
+        echo 'You must upload an image...';
+    }
     }
 }
