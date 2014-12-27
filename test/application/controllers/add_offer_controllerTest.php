@@ -20,13 +20,89 @@ class AddOfferControllerTest extends PHPUnit_Framework_TestCase {
     }
 
 
-    public function testaddOffer() {
+    public function testAddOffer() {
         $this->assertEquals(
                 array("1"), 
                 $this->object->addOffer("testName", "testDescr", "1", "2014-12-3", "2014-12-5", "5", "3")
         );
     }
-
+    
+    public function testAddOfferInvalidName(){
+        $this->assertEquals(
+                array("-1", "0", "0", "0", "0", "0"), 
+                $this->object->addOffer("@#$%^&*", "testDescr", "1", "2014-12-3", "2014-12-5", "5", "3")
+        );
+    }
+    
+    public function testAddOfferNameEmpty(){
+        $this->assertEquals(
+                array("-2", "0", "0", "0", "0", "0"), 
+                $this->object->addOffer("", "testDescr", "1", "2014-12-3", "2014-12-5", "5", "3")
+        );
+    }
+    
+    public function testAddOfferInvalidDescr(){
+        $this->assertEquals(
+                array("0", "-3", "0", "0", "0", "0"), 
+                $this->object->addOffer("testName", "$%^&", "1", "2014-12-3", "2014-12-5", "5", "3")
+        );
+    }
+    
+    public function testAddOfferStartDateEmpty(){
+        $this->assertEquals(
+                array("0", "0", "-4", "0", "0", "0"), 
+                $this->object->addOffer("testName", "testDescr", "1", "", "2014-12-5", "5", "3")
+        );
+    }
+    
+    public function testAddOfferEndDateEmpty(){
+        $this->assertEquals(
+                array("0", "0", "0", "-5", "0", "0"), 
+                $this->object->addOffer("testName", "testDescr", "1", "2014-12-5", "", "5", "3")
+        );
+    }
+    
+    public function testAddOfferInvalidDiscount(){
+        $this->assertEquals(
+                array("0", "0", "0", "0", "-6", "0"), 
+                $this->object->addOffer("testName", "testDescr", "1", "2014-12-3", "2014-12-5", "invalid", "3")
+        );
+    }
+    
+    public function testAddOfferDiscountOver100(){
+        $this->assertEquals(
+                array("0", "0", "0", "0", "-7", "0"), 
+                $this->object->addOffer("testName", "testDescr", "1", "2014-12-3", "2014-12-5", "300", "3")
+        );
+    }
+    
+    public function testAddOfferDiscountEmpty(){
+        $this->assertEquals(
+                array("0", "0", "0", "0", "-8", "0"), 
+                $this->object->addOffer("testName", "testDescr", "1", "2014-12-3", "2014-12-5", "", "3")
+        );
+    }
+    
+    public function testAddOfferInvalidPrice(){
+        $this->assertEquals(
+                array("0", "0", "0", "0", "0", "-9"), 
+                $this->object->addOffer("testName", "testDescr", "1", "2014-12-3", "2014-12-5", "5", "invalid")
+        );
+    }
+    
+    public function testAddOfferPriceEmpty(){
+        $this->assertEquals(
+                array("0", "0", "0", "0", "0", "-10"), 
+                $this->object->addOffer("testName", "testDescr", "1", "2014-12-3", "2014-12-5", "5", "")
+        );
+    }
+    
+    public function testAddOfferInvalidFields(){
+        $this->assertEquals(
+                array("-2", "0", "0", "0", "-6", "0"), 
+                $this->object->addOffer("", "testDescr", "1", "2014-12-3", "2014-12-5", "invalid", "3")
+        );
+    }
 
     public function testOfferName() {
         $this->assertEquals(
