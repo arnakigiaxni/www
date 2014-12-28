@@ -1,8 +1,7 @@
 <?php
+    include_once '/../config/db_connect.php';
+    include_once '/../models/company.php';
     session_start();
-    
-    include_once '../config/db_connect.php';
-    include_once '../models/company.php';
     mysql_query("SET NAMES utf8");
      
     class ProfileUpdateController {
