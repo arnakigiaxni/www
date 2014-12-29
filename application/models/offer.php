@@ -23,5 +23,25 @@
             }
         }
         
-    
+        function GetOffers ($userId)
+        {
+            $query = mysql_query(
+                    "SELECT
+                        *
+                    FROM
+                        offer
+                    WHERE
+                        comp_id = '$userId'    
+                    ORDER BY 
+                        id
+                    DESC 
+                        limit 5;"                    
+            );
 
+            if (mysql_num_rows($query) > 0 ) {
+                return $query;
+            }
+            else {
+                return false;
+            }
+        }
