@@ -11,6 +11,8 @@
     <br />
     <br />
     <div id='home_body'>
+        <p>Καλώς ήλθες, 
+    <?php echo $_SESSION['display_name']; ?> </p><br/>
     <?php
         $offers = new ShowOffers();
         $result = $offers->show();

@@ -31,6 +31,7 @@
                         $email, $phone, $city, $address, $postal_code, $latitude, 
                         $longitude, $_SESSION['id']);
                 $result = array("1");
+                $_SESSION['display_name'] = $display_name;
                 return $result;
             }
             else {
