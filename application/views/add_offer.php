@@ -88,7 +88,7 @@
         </span>
         <br />
         <br />
-        <label>Κατηγορία προσφοράς:</label><select name='cat_id' id="add_cat_id"><?php ShowCategories() ?></select>
+        <label>Κατηγορία προσφοράς:</label><select name='cat_id' id="add_cat_id"><?php ShowCategories($cat_id) ?></select>
         <span class='error'>*</span>
         <br />
         <br />
