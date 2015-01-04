@@ -194,7 +194,7 @@ class AddOfferControllerTest extends PHPUnit_Framework_TestCase {
 
     public function testDiscountMoreThan100() {
         $this->assertEquals(
-                "-7",
+                -7,
                 $this->object->discount("105")
         );
     }

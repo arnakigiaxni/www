@@ -31,7 +31,6 @@ class ProfileUpdateControllerTest extends PHPUnit_Framework_TestCase {
 
     /**
      * @covers ProfileUpdateController::profileUpdate
-     * @todo   Implement testProfileUpdate().
      */
     public function testProfileUpdateNoChanges() {
         $this->assertEquals(
@@ -42,7 +41,6 @@ class ProfileUpdateControllerTest extends PHPUnit_Framework_TestCase {
     
     /**
      * @covers ProfileUpdateController::profileUpdate
-     * @todo   Implement testProfileUpdate().
      */
     public function testProfileUpdateWithChanges() {
         $this->assertEquals(
@@ -53,7 +51,6 @@ class ProfileUpdateControllerTest extends PHPUnit_Framework_TestCase {
     
     /**
      * @covers ProfileUpdateController::profileUpdate
-     * @todo   Implement testProfileUpdate().
      */
     public function testProfileUpdateEmpty() {
         $this->assertEquals(
@@ -64,7 +61,6 @@ class ProfileUpdateControllerTest extends PHPUnit_Framework_TestCase {
     
     /**
      * @covers ProfileUpdateController::profileUpdate
-     * @todo   Implement testProfileUpdate().
      */
     public function testProfileUpdateInvalidInput() {
         $this->assertEquals(
@@ -75,7 +71,6 @@ class ProfileUpdateControllerTest extends PHPUnit_Framework_TestCase {
     
     /**
      * @covers ProfileUpdateController::profileUpdate
-     * @todo   Implement testProfileUpdate().
      */
     public function testProfileUpdateAlreadyExists() {
         $this->assertEquals(
@@ -86,7 +81,6 @@ class ProfileUpdateControllerTest extends PHPUnit_Framework_TestCase {
     
     /**
      * @covers ProfileUpdateController::compName
-     * @todo   Implement testCompName().
      */
     public function testCompName() {
         $this->assertEquals(
@@ -94,10 +88,31 @@ class ProfileUpdateControllerTest extends PHPUnit_Framework_TestCase {
                 $this->object->CompName("testName")
         );
     }
+    
+    public function testCompNameExists() {
+        $this->assertEquals(
+                -1,
+                $this->object->compName("carrefour")
+        );
+    }
+    
 
+    public function testCompNameEmpty() {
+        $this->assertEquals(
+                -2,
+                $this->object->compName("")
+        );
+    }
+    
+    public function testCompNameInvalid(){
+        $this->assertEquals(
+                -3,
+                $this->object->compName("@#$%^")
+        );
+    }
+    
     /**
      * @covers ProfileUpdateController::displayName
-     * @todo   Implement testDisplayName().
      */
     public function testDisplayName() {
         $this->assertEquals(
@@ -105,10 +120,23 @@ class ProfileUpdateControllerTest extends PHPUnit_Framework_TestCase {
                 $this->object->DisplayName("testName")
         );
     }
+    
+    public function testDisplayNameEmpty(){
+        $this->assertEquals(
+                -4,
+                $this->object->displayName("")
+        );
+    }
+    
+    public function testDisplayNameInvalid(){
+        $this->assertEquals(
+                -5,
+                $this->object->displayName("@#$%^")
+        );
+    }
 
     /**
      * @covers ProfileUpdateController::password
-     * @todo   Implement testPassword().
      */
     public function testPassword() {
         $this->assertEquals(
@@ -116,10 +144,23 @@ class ProfileUpdateControllerTest extends PHPUnit_Framework_TestCase {
                 $this->object->password("123456789")
         );
     }
+    
+    public function testPasswordEmpty() {
+        $this->assertEquals(
+                -6, 
+                $this->object->password("")
+        );
+    }
+    
+    public function testPasswordInvalid(){
+        $this->assertEquals(
+                -7,
+                $this->object->password("@#$%^&")
+        );
+    }
 
     /**
      * @covers ProfileUpdateController::email
-     * @todo   Implement testEmail().
      */
     public function testEmail() {
         $this->assertEquals(
@@ -127,10 +168,30 @@ class ProfileUpdateControllerTest extends PHPUnit_Framework_TestCase {
                 $this->object->email("testEmail@gmail.com")
         );
     }
+    
+    public function testEmailExists() {
+        $this->assertEquals(
+                -8,
+                $this->object->email("carrefour_serres@gmail.com")
+        );
+    }
+    
+    public function testEmailEmpty() {
+        $this->assertEquals(
+                -9, 
+                $this->object->email("")
+        );
+    }
+    
+    public function testEmailInvalid() {
+        $this->assertEquals(
+                -10, 
+                $this->object->email("whatever")
+        );
+    }
 
     /**
      * @covers ProfileUpdateController::phone
-     * @todo   Implement testPhone().
      */
     public function testPhone() {
         $this->assertEquals(
@@ -138,10 +199,37 @@ class ProfileUpdateControllerTest extends PHPUnit_Framework_TestCase {
                 $this->object->phone("2310790790")
         );
     }
+    
+    public function testPhoneExists() {
+        $this->assertEquals(
+                -11,
+                $this->object->phone("2321056230")
+        );
+    }
+    
+    public function testPhoneEmpty() {
+        $this->assertEquals(
+                -12, 
+                $this->object->phone("")
+        );
+    }
+    
+    public function testPhoneInvalid() {
+        $this->assertEquals(
+                -13, 
+                $this->object->phone("whatever")
+        );
+    }
+    
+    public function testPhoneLessThan10() {
+        $this->assertEquals(
+                -13, 
+                $this->object->phone("2345")
+        );
+    }
 
     /**
      * @covers ProfileUpdateController::city
-     * @todo   Implement testCity().
      */
     public function testCity() {
         $this->assertEquals(
@@ -149,10 +237,16 @@ class ProfileUpdateControllerTest extends PHPUnit_Framework_TestCase {
                 $this->object->city("thessaloniki")
         );
     }
+    
+    public function testCityEmpty() {
+        $this->assertEquals(
+                -14, 
+                $this->object->city("")
+        );
+    }
 
     /**
      * @covers ProfileUpdateController::address
-     * @todo   Implement testAddress().
      */
     public function testAddress() {
         $this->assertEquals(
@@ -160,10 +254,16 @@ class ProfileUpdateControllerTest extends PHPUnit_Framework_TestCase {
                 $this->object->address("emporiou 10")
         );
     }
+    
+    public function testAddressEmpty() {
+        $this->assertEquals(
+                -15, 
+                $this->object->address("")
+        );
+    }
 
     /**
      * @covers ProfileUpdateController::postalCode
-     * @todo   Implement testPostalCode().
      */
     public function testPostalCode() {
         $this->assertEquals(
@@ -171,10 +271,16 @@ class ProfileUpdateControllerTest extends PHPUnit_Framework_TestCase {
                 $this->object->postalCode("57100")
         );
     }
+    
+    public function testPostalCodeEmpty() {
+        $this->assertEquals(
+                -16, 
+                $this->object->postalCode("")
+        );
+    }
 
     /**
      * @covers ProfileUpdateController::latitude
-     * @todo   Implement testLatitude().
      */
     public function testLatitude() {
         $this->assertEquals(
@@ -182,15 +288,28 @@ class ProfileUpdateControllerTest extends PHPUnit_Framework_TestCase {
                 $this->object->latitude("40.401000")
         );
     }
+    
+    public function testLatitudeEmpty() {
+        $this->assertEquals(
+                -17, 
+                $this->object->latitude("")
+        );
+    }
 
     /**
      * @covers ProfileUpdateController::longitude
-     * @todo   Implement testLongitude().
      */
     public function testLongitude() {
         $this->assertEquals(
                 0, 
                 $this->object->longitude("40.401000")
+        );
+    }
+    
+    public function testLongitudeEmpty() {
+        $this->assertEquals(
+                -18, 
+                $this->object->longitude("")
         );
     }
 
