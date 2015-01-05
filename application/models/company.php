@@ -20,9 +20,9 @@
         }
 
         function AddCompany ($comp_name, $display_name, $password, $email, $phone, $city, $address, $postal_code, $latitude, $longitude){
-            $query = mysql_query(
+           /* $query = mysql_query(
                     "INSERT INTO
-                        company
+                        mock
                     SET
                         comp_name = '$comp_name',
                         display_name = '$display_name',
@@ -34,17 +34,17 @@
                         postal_code = '$postal_code',
                         latitude = '$latitude',
                         longitude = '$longitude'"
-            );
-            if (mysql_affected_rows()==1){
-                return $query;
-            }
-            else{
-                return false;
-            }
+            ); */
+            //if (mysql_affected_rows()==1){
+                return true;
+            //}
+            //else{
+                //return false;
+            //}
         }
 
         function UpdateProfile ($comp_name, $display_name, $password, $email, $phone, $city, $address, $postal_code, $latitude, $longitude, $userId){
-            $query = mysql_query(
+          /*  $query = mysql_query(
                     "UPDATE
                         company
                     SET
@@ -59,8 +59,8 @@
                         latitude = '$latitude',
                         longitude = '$longitude'
                     WHERE id='$userId'"
-            );
-            return $query;
+            ); */
+            return true;
         }
 
         function AutofillUpdateProfileForm ($userId) {

@@ -18,7 +18,6 @@
         $end_date = filter_input(INPUT_POST, 'end_date');
         $discount = filter_input(INPUT_POST, 'discount');
         $price = filter_input(INPUT_POST, 'price');
-        $image = filter_input(INPUT_POST, 'image');
         $path = "/../../public/uploads/";
         
         $offer = new AddOfferController();
@@ -169,9 +168,6 @@
             }
         ?>
         </span>
-        <br />
-        <br />
-        <label>Εικόνα προσφοράς: </label><input type="file" name="image" id="image" accept="image/*" />
         <br />
         <br />
         <input type="submit" name="submit" value="Καταχώρηση" class="buttons">
