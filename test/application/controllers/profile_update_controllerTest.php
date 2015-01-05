@@ -69,6 +69,41 @@ class ProfileUpdateControllerTest extends PHPUnit_Framework_TestCase {
         );
     }
     
+    public function testProfileUpdateInvalidCompName() {
+        $this->assertEquals(
+                array(-3, 0, 0, 0, 0, 0, 0, 0, 0, 0), 
+                $this->object->profileUpdate("@#$%^&*", "testDisplay", "testPassword", "test@test.com", "1212212112", "test", "test 13", "160 33", "39.3854631332584", "22.1632351250000")
+        );
+    }
+    
+    public function testProfileUpdateInvalidDisplayName() {
+        $this->assertEquals(
+                array(0, -5, 0, 0, 0, 0, 0, 0, 0, 0), 
+                $this->object->profileUpdate("testName", "!@#$%^&*", "testPassword", "test@test.com", "1212212112", "test", "test 13", "160 33", "39.3854631332584", "22.1632351250000")
+        );
+    }
+    
+    public function testProfileUpdateInvalidPassword() {
+        $this->assertEquals(
+                array(0, 0, -7, 0, 0, 0, 0, 0, 0, 0), 
+                $this->object->profileUpdate("testName", "testDisplay", "@#$%", "test@test.com", "1212212112", "test", "test 13", "160 33", "39.3854631332584", "22.1632351250000")
+        );
+    }
+    
+    public function testProfileUpdateInvalidEmail() {
+        $this->assertEquals(
+                array(0, 0, 0, -10, 0, 0, 0, 0, 0, 0), 
+                $this->object->profileUpdate("testName", "testDisplay", "testPassword", "whatever", "1212212112", "test", "test 13", "160 33", "39.3854631332584", "22.1632351250000")
+        );
+    }
+    
+    public function testProfileUpdateInvalidPhone() {
+        $this->assertEquals(
+                array(0, 0, 0, 0, -13, 0, 0, 0, 0, 0), 
+                $this->object->profileUpdate("testName", "testDisplay", "testPassword", "test@test.com", "whatever", "test", "test 13", "160 33", "39.3854631332584", "22.1632351250000")
+        );
+    }
+    
     /**
      * @covers ProfileUpdateController::profileUpdate
      */
