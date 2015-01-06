@@ -245,6 +245,7 @@ class AddOfferControllerTest extends PHPUnit_Framework_TestCase {
                 -10,
                 $this->object->price("")
         );
+        mysql_query("DELETE FROM offer ORDER BY id DESC LIMIT 1");
     }
 
 }

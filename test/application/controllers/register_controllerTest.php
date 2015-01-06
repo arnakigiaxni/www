@@ -15,7 +15,6 @@ class RegisterControllerTest extends PHPUnit_Framework_TestCase {
 
 
     protected function tearDown() {
-        
     }
 
 
@@ -73,5 +72,7 @@ class RegisterControllerTest extends PHPUnit_Framework_TestCase {
                 array(-2, 0, -7, -9, -12, 0, 0, 0, 0, 0), 
                 $this->object->addCompany("mitsos", "mitsos", "mitsos", "mitsos", "mitsos", "mitsos", "mitsos", "mitsos", "mitsos", "mitsos")
         );
+        mysql_query("DELETE FROM company ORDER BY id DESC LIMIT 4");
     }     
+    
 }
