@@ -35,11 +35,11 @@
     <form action="<?php echo $frm?>" method="post" class="forms" enctype="multipart/form-data">
         <br />
         <br />
-        <label>Offers:</label><select name='id' id="id"><?php ShowOffers($_SESSION['id']) ?></select>
-        <span class='error'>*</span>
+        <label>Επιλογή προσφοράς για διαγραφή:</label><select name='id' id="id"><?php ShowOffers($_SESSION['id']) ?></select>
+        <span class='error'></span>
         <br />
         <br />
-        <input type="submit" name="submit" value="Καταχώρηση" class="buttons">
+        <input type="submit" name="submit" value="Διαγραφή" class="buttons">
     </form>
     </div>
 <?php

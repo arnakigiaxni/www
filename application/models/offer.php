@@ -67,4 +67,9 @@
                 WHERE 
                     id = $offer_id"                    
             );
+        if (mysql_affected_rows()==1){
+                return true;
+            } else {
+                return false;
+            }
         }
