@@ -1,0 +1,48 @@
+<?php
+    include_once '/../config/db_connect.php';
+    include_once '/../models/offer.php';
+    include_once '/../controllers/delete_offer_controller.php';
+    mysql_query("SET NAMES utf8");
+
+    if(!isset($_SESSION['id'])) {
+        header( "Location: ../controllers/index.php" );
+    }    
+    
+    $frm = filter_input(INPUT_SERVER, 'PHP_SELF', FILTER_SANITIZE_STRING);
+    $srv = filter_input(INPUT_SERVER, 'REQUEST_METHOD', FILTER_SANITIZE_STRING);
+    if($srv == 'POST'){
+        $offer_id = filter_input(INPUT_POST, 'id');
+        $delete = new DeleteOfferController();
+        $delete->DeleteOffer($offer_id);
+    }
+?>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="../../public/css/style.css" />
+        <link rel="icon" type="image/png" href="../../public/img/favicon.png" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Διαγραφή προσφοράς</title>
+    </head>
+
+    <body>
+	<div id="graphics">
+        <a href="../controllers/index.php"><img src="../../public/img/header.png"/></a>
+        </div>
+    <?php
+        include 'menu.php';
+    ?>
+    <div id="delete_offer">
+    <form action="<?php echo $frm?>" method="post" class="forms" enctype="multipart/form-data">
+        <br />
+        <br />
+        <label>Offers:</label><select name='id' id="id"><?php ShowOffers($_SESSION['id']) ?></select>
+        <span class='error'>*</span>
+        <br />
+        <br />
+        <input type="submit" name="submit" value="Καταχώρηση" class="buttons">
+    </form>
+    </div>
+<?php
+    include 'footer.php';
+?>
+

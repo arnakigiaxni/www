@@ -127,6 +127,21 @@ textarea {
         font-family: Georgia;
 }
 
+#delete_offer {
+	background-image:url(../../public/img/body.png);
+	background-repeat:no-repeat;
+	background-size:100%;
+	margin-left:auto;
+	margin-right:auto;
+        margin-top: 0.5%;
+	width: 66%;
+	height: 630px;
+        color: white;
+        font-weight: bold;
+        font-size: 18px;
+        font-family: Georgia;
+}
+
 #update {
 	background-image:url(../../public/img/body.png);
 	background-repeat:no-repeat;

@@ -44,3 +44,27 @@
                 return false;
             }
         }
+        
+        function ShowOffers($userId) {
+            $return = mysql_query(
+                    "SELECT
+                        *
+                    FROM
+                        offer
+                    WHERE
+                        comp_id = '$userId'"                
+            );
+            while ($offers = mysql_fetch_array($return) ) {
+                            echo '<option value="' . $offers['id'] . '">' . $offers[ 'offer_name' ] . '</option>';
+            }
+        }
+        
+        function deleteOffer($offer_id) {
+            mysql_query(
+                "DELETE
+                FROM
+                    offer 
+                WHERE 
+                    id = $offer_id"                    
+            );
+        }
