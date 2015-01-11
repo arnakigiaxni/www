@@ -1,4 +1,7 @@
 <?php
+
+    mysql_query("SET NAMES utf8");
+    
     function ShowCategories($cat_id) {
         if ($cat_id != NULL){
             $return = mysql_query(

@@ -4,7 +4,6 @@ include_once '/../models/category.php';
 include_once '/../models/offer.php';
 include_once "ImageManipulator.php";
 session_start();
-mysql_query("SET NAMES utf8");
 
 class AddOfferController {
 
@@ -12,12 +11,12 @@ class AddOfferController {
                     $end_date, $discount, $price) {        
         $code = new AddOfferController();
         
-        $code_name = $code->offerName($offer_name);
-        $code_descr = $code->offerDescr($offer_descr);
-        $code_start = $code->startDate($start_date);
-        $code_end = $code->endDate($end_date);
-        $code_dis = $code->discount($discount);
-        $code_price = $code->price($price);
+        $code_name = $code->validateOfferName($offer_name);
+        $code_descr = $code->validateOfferDescr($offer_descr);
+        $code_start = $code->validateStartDate($start_date);
+        $code_end = $code->validateEndDate($end_date);
+        $code_dis = $code->validateDiscount($discount);
+        $code_price = $code->validatePrice($price);
         $error_codes = array($code_name, $code_descr, $code_start, $code_end, $code_dis, $code_price);
         
         if ($code_name == 0 && $code_descr == 0 && $code_start == 0 &&
@@ -36,7 +35,7 @@ class AddOfferController {
         }
     }
     
-    function offerName ($offer_name){
+    function validateOfferName ($offer_name){
         if (!preg_match("/^[a-zA-Z0-9\x80-\xFF\!\%\&\-\+ ]*$/", $offer_name)) {
            $errorCode = -1;
         } else if (empty($offer_name)) {
@@ -47,7 +46,7 @@ class AddOfferController {
         return $errorCode;
     }
     
-    function offerDescr($offer_descr){
+    function validateOfferDescr($offer_descr){
         if (!preg_match("/^[a-zA-Z0-9\x80-\xFF\.\!\%\&\-\+ ]*$/", $offer_descr)) {
             $errorCode = -3;
         } else {
@@ -56,7 +55,7 @@ class AddOfferController {
         return $errorCode;
     }
     
-    function startDate($start_date){
+    function validateStartDate($start_date){
         if (empty($start_date)) {
            $errorCode = -4;
         } else {
@@ -65,7 +64,7 @@ class AddOfferController {
         return $errorCode;
     }
     
-    function endDate($end_date){
+    function validateEndDate($end_date){
         if (empty($end_date)) {
             $errorCode = -5;
         } else {
@@ -74,7 +73,7 @@ class AddOfferController {
         return $errorCode;
     }
     
-    function discount ($discount) {
+    function validateDiscount ($discount) {
         if (!preg_match("/^[0-9.]*$/", $discount)) {
             $errorCode = -6;
         } else if ($discount > 100) {
@@ -87,7 +86,7 @@ class AddOfferController {
         return $errorCode;
     }
     
-    function price ($price){
+    function validatePrice ($price){
         if (!preg_match("/^[0-9.]*$/", $price)) {
             $errorCode = -9;
         } else if (empty($price)) {
