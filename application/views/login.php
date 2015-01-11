@@ -28,9 +28,9 @@
     <input type="submit" value="Σύνδεση" id="button" />
 </form>
 <?php if($result == -2) {
-    echo "Το όνομα χρήστη ή ο κωδικός σας είναι λάθος, προσπαθήστε ξανά.";
-    $result = null;
-}
+        echo "Το όνομα χρήστη ή ο κωδικός σας είναι λάθος, προσπαθήστε ξανά.";
+        $result = null;
+      }
 ?>
 <br />
 <h5> Δεν είστε μέλος; Πατήστε <span id="here"><a href='../views/register.php'>εδώ</a></span> για να εγγραφείτε. </h5>

@@ -39,7 +39,8 @@
         <span class='error'></span>
         <br />
         <br />
-        <input type="submit" name="submit" value="Διαγραφή" class="buttons">
+        <input type="submit" name="submit" value="Διαγραφή" class="buttons" id="button">
+        <input type="button" value="Ακύρωση" id="button" onclick="window.open('../controllers/index.php', '_self');")/>
     </form>
     </div>
 <?php

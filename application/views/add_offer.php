@@ -28,6 +28,13 @@
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="../../public/css/style.css" />
+         <?php
+            if (isset ($offervar)){
+               if(in_array("1", $offervar)){
+                   echo '<meta http-equiv="refresh" content="2;url=../controllers/index.php">';
+               }
+            }
+         ?>
         <link rel="icon" type="image/png" href="../../public/img/favicon.png" />
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>Καταχώρηση προσφοράς</title>
@@ -170,7 +177,8 @@
         </span>
         <br />
         <br />
-        <input type="submit" name="submit" value="Καταχώρηση" class="buttons">
+        <input type="submit" name="submit" value="Καταχώρηση" class="buttons" id="button">
+        <input type="button" value="Ακύρωση" id="button" onclick="window.open('../controllers/index.php', '_self');")/>
     </form>
     </div>
 <?php

@@ -47,6 +47,13 @@
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="../../public/css/style.css" />
+         <?php
+            if (isset ($update_res)){
+               if(in_array("1", $update_res)){
+                   echo '<meta http-equiv="refresh" content="2;url=../controllers/index.php">';
+               }
+            }
+         ?>        
         <link rel="icon" type="image/png" href="../../public/img/favicon.png" />
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>Επεξεργασία προφίλ</title>
@@ -257,7 +264,8 @@
         ?></span>
         <br />
         <br />
-        <input type="submit" value="Επεξεργασία" class="buttons"/>
+        <input type="submit" value="Επεξεργασία" class="buttons" id="button"/>
+        <input type="button" value="Ακύρωση" id="button" onclick="window.open('../controllers/index.php', '_self');")/>
     </form>
     </div>
     <?php

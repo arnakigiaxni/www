@@ -5,6 +5,10 @@
     include_once '/../controllers/register_controller.php';
     mysql_query("SET NAMES utf8");
     
+    if(isset($_SESSION['id'])) {
+        header( "Location: ../controllers/index.php" );
+    }
+    
     $frm = filter_input(INPUT_SERVER, 'PHP_SELF', FILTER_SANITIZE_STRING);
     $srv = filter_input(INPUT_SERVER, 'REQUEST_METHOD', FILTER_SANITIZE_STRING);
     if($srv == 'POST'){
@@ -27,6 +31,13 @@
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="../../public/css/style.css" />
+         <?php
+            if (isset ($registervar)){
+               if(in_array("1", $registervar)){
+                   echo '<meta http-equiv="refresh" content="2;url=../controllers/index.php">';
+               }
+            }
+         ?>        
         <link rel="icon" type="image/png" href="../../public/img/favicon.png" />
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>Εγγραφή νέου χρήστη</title>
@@ -242,7 +253,8 @@
         </span>
         <br />
         <br />
-        <input type="submit" value="Εγγραφή" class="buttons" name="submit">
+        <input type="submit" value="Εγγραφή" class="buttons" name="submit" id="button">
+        <input type="button" value="Ακύρωση" id="button" onclick="window.open('../controllers/index.php', '_self');")/>
     </form>
     </div>
 <?php
