@@ -2,7 +2,6 @@
 
     include_once '/../config/db_connect.php';
     include_once '/../models/company.php';
-    mysql_query("SET NAMES utf8");
     
     class RegisterController { 
         
@@ -11,16 +10,16 @@
             
             $code = new RegisterController();
             
-            $code_comp_name = $code->compName($comp_name);
-            $code_display_name = $code->displayName($display_name);
-            $code_password = $code->password($password);
-            $code_email = $code->email($email);
-            $code_phone = $code->phone($phone);
-            $code_city = $code->city($city);
-            $code_address = $code->address($address);
-            $code_postal_code = $code->postalCode($postal_code);
-            $code_latitude = $code->latitude($latitude);
-            $code_longitude = $code->longitude($longitude);
+            $code_comp_name = $code->validateCompName($comp_name);
+            $code_display_name = $code->validateDisplayName($display_name);
+            $code_password = $code->validatePassword($password);
+            $code_email = $code->validateEmail($email);
+            $code_phone = $code->validatePhone($phone);
+            $code_city = $code->validateCity($city);
+            $code_address = $code->validateAddress($address);
+            $code_postal_code = $code->validatePostalCode($postal_code);
+            $code_latitude = $code->validateLatitude($latitude);
+            $code_longitude = $code->validateLongitude($longitude);
             
             $error_codes = array($code_comp_name, $code_display_name, $code_password, $code_email, $code_phone, 
                 $code_city, $code_address, $code_postal_code, $code_latitude, $code_longitude);
@@ -45,7 +44,7 @@
         }
     
         
-        function compName ($comp_name){
+        function validateCompName ($comp_name){
             $comp_exists = RegisterCompNameExists($comp_name);
             if (empty($comp_name)) {
                 $errorCode = -1;
@@ -59,7 +58,7 @@
             return $errorCode;
         }
         
-        function displayName ($display_name){
+        function validateDisplayName ($display_name){
             if (empty($display_name)) {
                 $errorCode = -4;
             } else if (!preg_match("/^[a-zA-Z0-9\x80-\xFF ]*$/",$display_name)) {
@@ -70,7 +69,7 @@
             return $errorCode;
         }        
         
-        function password ($password){
+        function validatePassword ($password){
             if (empty($password)) {
                 $errorCode = -6;
             } else if (!preg_match("/^[a-zA-Z0-9\x80-\xFF_][a-zA-Z0-9\x80-\xFF_][a-zA-Z0-9\x80-\xFF_][a-zA-Z0-9\x80-\xFF_][a-zA-Z0-9\x80-\xFF_][a-zA-Z0-9\x80-\xFF_][a-zA-Z0-9\x80-\xFF_][a-zA-Z0-9\x80-\xFF_]*$/",$password)) {
@@ -81,7 +80,7 @@
             return $errorCode;
         }      
         
-        function email ($email){
+        function validateEmail ($email){
             $email_exists = RegisterEmailExists($email);
             if (empty($email)) {
                 $errorCode = -8;
@@ -95,7 +94,7 @@
             return $errorCode;
         }        
         
-        function phone ($phone){
+        function validatePhone ($phone){
             $phone_exists = RegisterPhoneExists($phone);
             if (empty($phone)) {
                 $errorCode = -11;
@@ -109,7 +108,7 @@
             return $errorCode;
         }        
         
-        function city ($city){
+        function validateCity ($city){
             if (empty($city)) {
                 $errorCode = -14;
             } else {
@@ -118,7 +117,7 @@
             return $errorCode;
         }      
         
-        function address ($address){
+        function validateAddress ($address){
             if (empty($address)) {
                 $errorCode = -15;
             } else {
@@ -127,12 +126,12 @@
             return $errorCode;
         }    
         
-        function postalCode ($postal_code){
+        function validatePostalCode ($postal_code){
             $errorCode = 0;
             return $errorCode;
         }     
         
-        function latitude ($latitude){
+        function validateLatitude ($latitude){
             if (empty($latitude)) {
                 $errorCode = -16;
             } else {
@@ -141,7 +140,7 @@
             return $errorCode;
         }        
         
-        function longitude ($longitude){
+        function validateLongitude ($longitude){
             if (empty($longitude)) {
                 $errorCode = -17;
             } else {
