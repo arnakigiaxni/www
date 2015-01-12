@@ -8,12 +8,16 @@
         header( "Location: ../controllers/index.php" );
     }    
     
+    $msg = "Επιλέξτε μια από τις παρακάτω προσφορές για διαγραφή";
     $frm = filter_input(INPUT_SERVER, 'PHP_SELF', FILTER_SANITIZE_STRING);
     $srv = filter_input(INPUT_SERVER, 'REQUEST_METHOD', FILTER_SANITIZE_STRING);
     if($srv == 'POST'){
         $offer_id = filter_input(INPUT_POST, 'id');
         $delete = new DeleteOfferController();
-        $delete->DeleteOffer($offer_id);
+        $result = $delete->DeleteOffer($offer_id);
+        if ($result !== false) {
+            $msg = "Η προσφορά ".$result." διαγράφηκε επιτυχώς";
+        }
     }
 ?>
 <html>
@@ -32,10 +36,13 @@
         include 'menu.php';
     ?>
     <div id="delete_offer">
+    <?php
+        echo $msg;
+    ?>    
     <form action="<?php echo $frm?>" method="post" class="forms" enctype="multipart/form-data">
         <br />
         <br />
-        <label>Επιλογή προσφοράς για διαγραφή:</label><select name='id' id="id"><?php ShowOffers($_SESSION['id']) ?></select>
+        <label>Προσφορές: </label><select name='id' id="id"><?php ShowOffers($_SESSION['id']) ?></select>
         <span class='error'></span>
         <br />
         <br />

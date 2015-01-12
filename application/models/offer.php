@@ -67,9 +67,28 @@
                 WHERE 
                     id = $offer_id"                    
             );
-        if (mysql_affected_rows()==1){
+            if (mysql_affected_rows()>0){
                 return true;
-            } else {
+            } 
+            else {
+                return false;
+            }
+        }
+        
+        function GetOfferById ($offer_id)
+        {
+            $query = mysql_query(
+                    "SELECT
+                        *
+                    FROM
+                        offer
+                    WHERE 
+                        id='$offer_id'"         
+            );
+            if (mysql_num_rows($query) > 0 ) {
+                return $query;
+            }
+            else {
                 return false;
             }
         }
