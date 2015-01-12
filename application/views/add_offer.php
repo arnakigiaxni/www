@@ -57,6 +57,8 @@
         }
     }
     ?>
+    <br />
+    <br />
     <form action="<?php echo $frm?>" method="post" class="forms" enctype="multipart/form-data">
 	<label>Όνομα προσφοράς:</label><input type='text' name='offer_name' maxlength='30' id='add_offer_name'
         <?php

@@ -74,6 +74,8 @@
         }
     }
     ?>
+    <br />
+    <br />
     <form action="<?php echo $frm?>" method="post" class="forms" name='reg_form'>
         <label>Όνομα χρήστη:</label><input type='text' name='comp_name' maxlength='20' id='reg_username'
         <?php

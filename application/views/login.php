@@ -21,7 +21,7 @@
 <div id='login'>
 <br /><br />
 <form action="<?php echo $frm?>" method="post" class="forms">
-    <label>Όνομα Χρήστη:</label> <input type="text" name="username" id="username" />
+    <label>Όνομα χρήστη:</label> <input type="text" name="username" id="username" />
     <br /><br />
     <label>Κωδικός:</label> <input type="password" name="password" id="password"/>
     <br /><br />

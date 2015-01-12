@@ -61,7 +61,8 @@
             }
         }
     ?>    
-        
+    <br />
+    <br />
     <form action="<?php echo $frm?>" method="post" class="forms" name='reg_form'>
 	<label>Όνομα χρήστη:</label><input type='text' name='comp_name' maxlength='20' id='reg_username'
         <?php
@@ -126,7 +127,7 @@
         </span>
         <br />
         <br />     
-	<label>Email:</label><input type='text' name='email' maxlength='25' id='reg_email'
+	<label>E-mail:</label><input type='text' name='email' maxlength='25' id='reg_email'
          <?php
             if (isset ($email)){
                 echo "value=" . $email;
