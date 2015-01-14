@@ -20,11 +20,11 @@ class DeleteOfferControllerTest extends PHPUnit_Framework_TestCase {
                     "INSERT INTO
                         offer
                     SET
-                        id = '0',
+                        id = '-1',
                         comp_id = '1',
                         cat_id = '1',
                         offer_name = 'T-Shirts',
-                        offer_descr = '20% φθηνότερα',
+                        offer_descr = '20% fthinotera',
                         start_date = '2014-12-01',
                         end_date = '2014-05-01',
                         discount = '20',
@@ -47,7 +47,7 @@ class DeleteOfferControllerTest extends PHPUnit_Framework_TestCase {
     public function testDeleteOffer() {
         $this->assertEquals(
                 "T-Shirts", 
-                $this->object->DeleteOffer(0)
+                $this->object->DeleteOffer(-1)
         );
     }
         
@@ -57,7 +57,7 @@ class DeleteOfferControllerTest extends PHPUnit_Framework_TestCase {
      */
     public function testDeleteOfferInvaild() {
         $this->assertEquals(
-                "FALSE", 
+                FALSE, 
                 $this->object->DeleteOffer(-5)
         );
     }
