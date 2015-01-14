@@ -21,8 +21,11 @@ class DeleteOfferController {
         $result = GetOfferById($offer_id);
         if ($result !== false) {
             $offer = mysql_fetch_array($result);
+            return $offer["offer_name"];
         }
-        return $offer["offer_name"];
+        else { 
+            return false;
+        }
     }
  
 }

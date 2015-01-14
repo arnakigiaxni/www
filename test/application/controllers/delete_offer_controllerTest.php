@@ -16,20 +16,6 @@ class DeleteOfferControllerTest extends PHPUnit_Framework_TestCase {
      */
     protected function setUp() {
         $this->object = new DeleteOfferController;
-        mysql_query(
-                    "INSERT INTO
-                        offer
-                    SET
-                        id = '-1',
-                        comp_id = '1',
-                        cat_id = '1',
-                        offer_name = 'T-Shirts',
-                        offer_descr = '20% fthinotera',
-                        start_date = '2014-12-01',
-                        end_date = '2014-05-01',
-                        discount = '20',
-                        price = '15'"
-            ); 
     }
 
     /**
@@ -45,6 +31,20 @@ class DeleteOfferControllerTest extends PHPUnit_Framework_TestCase {
      * @todo   Implement testDeleteOffer().
      */
     public function testDeleteOffer() {
+        mysql_query(
+                    "INSERT INTO
+                        offer
+                    SET
+                        id = '-1',
+                        comp_id = '1',
+                        cat_id = '1',
+                        offer_name = 'T-Shirts',
+                        offer_descr = '20% fthinotera',
+                        start_date = '2014-12-01',
+                        end_date = '2014-05-01',
+                        discount = '20',
+                        price = '15'"
+            ); 
         $this->assertEquals(
                 "T-Shirts", 
                 $this->object->DeleteOffer(-1)
@@ -57,7 +57,7 @@ class DeleteOfferControllerTest extends PHPUnit_Framework_TestCase {
      */
     public function testDeleteOfferInvaild() {
         $this->assertEquals(
-                FALSE, 
+                false, 
                 $this->object->DeleteOffer(-5)
         );
     }
