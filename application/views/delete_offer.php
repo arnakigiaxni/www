@@ -36,9 +36,10 @@
         include 'menu.php';
     ?>
     <div id="delete_offer">
-    <?php
-        echo $msg;
-    ?>    
+        <br />
+        <?php
+        echo "<h3>$msg</h3>";
+        ?>    
     <form action="<?php echo $frm?>" method="post" class="forms" enctype="multipart/form-data">
         <br />
         <br />
@@ -47,6 +48,8 @@
         <br />
         <br />
         <input type="submit" name="submit" value="Διαγραφή" class="buttons" id="button">
+        <br />
+        <br />
         <input type="button" value="Ακύρωση" id="button" onclick="window.open('../controllers/index.php', '_self');")/>
     </form>
     </div>

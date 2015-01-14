@@ -11,6 +11,7 @@
     
     $frm = filter_input(INPUT_SERVER, 'PHP_SELF', FILTER_SANITIZE_STRING);
     $srv = filter_input(INPUT_SERVER, 'REQUEST_METHOD', FILTER_SANITIZE_STRING);
+    $msg = "Συμπληρώστε τα παρακάτω πεδία για να εγγραφείτε";
     if($srv == 'POST'){
         $comp_name = filter_input(INPUT_POST, 'comp_name');
         $display_name = filter_input(INPUT_POST, 'display_name');
@@ -52,24 +53,21 @@
         include 'menu.php';
     ?>
     <div id="register">
+    <br />
     <?php
         if (isset ($registervar)){
             if (in_array("1", $registervar)) {
-                echo "Επιτυχής εγγραφή!";
+                $msg = "Επιτυχής εγγραφή";
                 unset($comp_name, $display_name, $password, $email, $phone, $city, $address, 
                 $postal_code, $latitude, $longitude);
             }
         }
+        echo "<h3>$msg</h3>";
     ?>    
     <br />
     <br />
     <form action="<?php echo $frm?>" method="post" class="forms" name='reg_form'>
-	<label>Όνομα χρήστη:</label><input type='text' name='comp_name' maxlength='20' id='reg_username'
-        <?php
-            if (isset ($comp_name)){
-                echo "value=" . $comp_name;
-            }
-        ?> >                                 
+	<label>Όνομα χρήστη:</label><input type='text' name='comp_name' maxlength='20' id='reg_username' value="<?php if (isset ($comp_name)){ echo $comp_name; } ?>">                                
         <span class='error'>* 
         <?php
             if (isset ($registervar)){
@@ -87,12 +85,7 @@
         </span>
         <br />
         <br />
-	<label>Επωνυμία καταστήματος:</label><input type='text' name='display_name' maxlength='20' id='reg_display'
-        <?php
-            if (isset ($display_name)){
-                echo "value=" . $display_name;
-            }
-        ?> >         
+	<label>Επωνυμία καταστήματος:</label><input type='text' name='display_name' maxlength='20' id='reg_display' value="<?php if (isset ($display_name)){ echo $display_name; } ?>">          
         <span class='error'>* 
         <?php
             if (isset ($registervar)){
@@ -107,12 +100,7 @@
         </span>
         <br />
         <br />
-	<label>Κωδικός:</label><input type='password' name='password' maxlength='20' id='reg_password'                                      
-        <?php
-            if (isset ($password)){
-                echo "value=" . $password;
-            }
-        ?> >                                        
+	<label>Κωδικός:</label><input type='password' name='password' maxlength='20' id='reg_password' value="<?php if (isset ($password)){ echo $password; } ?>">                                        
         <span class='error'>* 
         <?php
             if (isset ($registervar)){
@@ -127,12 +115,7 @@
         </span>
         <br />
         <br />     
-	<label>E-mail:</label><input type='text' name='email' maxlength='25' id='reg_email'
-         <?php
-            if (isset ($email)){
-                echo "value=" . $email;
-            }
-        ?> >                                     
+	<label>E-mail:</label><input type='text' name='email' maxlength='25' id='reg_email' value="<?php if (isset ($email)){ echo $email; } ?>">                                    
         <span class='error'>* 
         <?php
             if (isset ($registervar)){
@@ -150,12 +133,7 @@
         </span>
         <br />
         <br />
- 	<label>Τηλέφωνο:</label><input type='text' name='phone' maxlength='10' id='reg_phone'
-         <?php
-            if (isset ($phone)){
-                echo "value=" . $phone;
-            }
-        ?> >                                        
+ 	<label>Τηλέφωνο:</label><input type='text' name='phone' maxlength='10' id='reg_phone' value="<?php if (isset ($phone)){ echo $phone; } ?>">                                       
         <span class='error'>* 
         <?php
             if (isset ($registervar)){
@@ -178,12 +156,7 @@
              για να επιλέξετε την ακριβή τοποθεσία του καταστήματος σας στο χάρτη.
         <br />
         <br />   
- 	<label>Πόλη:</label><input type='text' name='city' maxlength='25' readonly id='reg_city'
-         <?php
-            if (isset ($city)){
-                echo "value=" . $city;
-            }
-        ?> >                                    
+ 	<label>Πόλη:</label><input type='text' name='city' maxlength='25' readonly id='reg_city' value="<?php if (isset ($city)){ echo $city; } ?>">                                     
         <span class='error'>* 
         <?php
             if (isset ($registervar)){
@@ -195,12 +168,7 @@
         </span>
         <br />
         <br />
- 	<label>Διεύθυνση:</label><input type='text' name='address' maxlength='50' readonly id='reg_address'
-         <?php
-            if (isset ($address)){
-                echo "value=" . $address;
-            }
-        ?> >                                         
+ 	<label>Διεύθυνση:</label><input type='text' name='address' maxlength='50' readonly id='reg_address' value="<?php if (isset ($address)){ echo $address; } ?>">                                         
         <span class='error'>* 
        <?php
             if (isset ($registervar)){
@@ -212,20 +180,10 @@
         </span>
         <br />
         <br />
- 	<label>Ταχυδρομικός κώδικας:</label><input type='text' name='postal_code' maxlength='6' readonly id='reg_postal_code'
-         <?php
-            if (isset ($postal_code)){
-                echo "value=" . $postal_code;
-            }
-        ?> >                                                    
+ 	<label>Ταχυδρομικός κώδικας:</label><input type='text' name='postal_code' maxlength='6' readonly id='reg_postal_code' value="<?php if (isset ($postal_code)){ echo $postal_code; } ?>">                                                   
         <br />
         <br />
- 	<label>Γεωγραφικό πλάτος:</label><input type='text' name='latitude' maxlength='30' readonly id='info_lat'
-         <?php
-            if (isset ($latitude)){
-                echo "value=" . $latitude;
-            }
-        ?> >                                                 
+ 	<label>Γεωγραφικό πλάτος:</label><input type='text' name='latitude' maxlength='30' readonly id='info_lat' value="<?php if (isset ($latitude)){ echo $latitude; } ?>">                                                
         <span class='error'>* 
        <?php
             if (isset ($registervar)){
@@ -237,12 +195,7 @@
         </span>
         <br />
         <br />
- 	<label>Γεωγραφικό μήκος:</label><input type='text' name='longitude' maxlength='30' readonly id='info_lng'
-         <?php
-            if (isset ($longitude)){
-                echo "value=" . $longitude;
-            }
-        ?> >                                                
+ 	<label>Γεωγραφικό μήκος:</label><input type='text' name='longitude' maxlength='30' readonly id='info_lng' value="<?php if (isset ($longitude)){ echo $longitude; } ?>">                                                 
         <span class='error'>* 
        <?php
             if (isset ($registervar)){
@@ -254,7 +207,11 @@
         </span>
         <br />
         <br />
+        <br />
+        <br />
         <input type="submit" value="Εγγραφή" class="buttons" name="submit" id="button">
+        <br />
+        <br />
         <input type="button" value="Ακύρωση" id="button" onclick="window.open('../controllers/index.php', '_self');")/>
     </form>
     </div>

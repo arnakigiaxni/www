@@ -10,6 +10,7 @@
     
     $frm = filter_input(INPUT_SERVER, 'PHP_SELF', FILTER_SANITIZE_STRING);
     $srv = filter_input(INPUT_SERVER, 'REQUEST_METHOD', FILTER_SANITIZE_STRING);
+    $msg = "Συμπληρώστε τα παρακάτω πεδία για να καταχωρήσετε την προσφορά σας";
     if($srv == 'POST'){
         $offer_name = filter_input(INPUT_POST, 'offer_name');
         $offer_descr = filter_input(INPUT_POST, 'offer_descr');
@@ -48,24 +49,21 @@
         include 'menu.php';
     ?>
     <div id="add_offer">
+    <br />
     <?php
     if (isset ($offervar)){
         if (in_array("1", $offervar)) {
-            echo "Η προσφορά καταχωρήθηκε επιτυχώς!";
+            $msg = "Η προσφορά καταχωρήθηκε επιτυχώς!";
             unset($offer_name, $offer_descr, $cat_id, $start_date, $end_date, 
                     $discount, $price);
         }
     }
+    echo "<h3>$msg</h3>";
     ?>
     <br />
     <br />
     <form action="<?php echo $frm?>" method="post" class="forms" enctype="multipart/form-data">
-	<label>Όνομα προσφοράς:</label><input type='text' name='offer_name' maxlength='30' id='add_offer_name'
-        <?php
-            if (isset ($offer_name)){
-                echo "value=" . $offer_name;
-            }
-        ?> >
+	<label>Όνομα προσφοράς:</label><input type='text' name='offer_name' maxlength='30' id='add_offer_name' value="<?php if (isset ($offer_name)){ echo $offer_name; } ?>"> 
         <span class='error'>*
         <?php
             if (isset ($offervar)){
@@ -136,12 +134,7 @@
         </span>
         <br />
         <br />
-        <label>Ποσοστό έκπτωσης (%):</label><input type='text' name='discount' maxlength='4' id="add_discount"
-        <?php
-            if (isset ($offer_name)){
-                echo "value=" . $discount;
-            }
-        ?> >
+        <label>Ποσοστό έκπτωσης (%):</label><input type='text' name='discount' maxlength='3' id="add_discount" value="<?php if (isset ($discount)){ echo $discount; } ?>"> 
         <span class='error'>*
         <?php
             if (isset ($offervar)){
@@ -159,12 +152,7 @@
         </span>
         <br />
         <br />
-        <label>Τιμή μετά την έκπτωση (€):</label><input type='text' name='price' maxlength='8' id="add_price"
-        <?php
-            if (isset ($offer_name)){
-                echo "value=" . $price;
-            }
-        ?>>
+        <label>Τιμή μετά την έκπτωση (€):</label><input type='text' name='price' maxlength='8' id="add_price" value="<?php if (isset ($price)){ echo $price; } ?>"> 
         <span class='error'>* 
         <?php
             if (isset ($offervar)){
@@ -179,7 +167,11 @@
         </span>
         <br />
         <br />
+        <br />
+        <br />
         <input type="submit" name="submit" value="Καταχώρηση" class="buttons" id="button">
+        <br />
+        <br />
         <input type="button" value="Ακύρωση" id="button" onclick="window.open('../controllers/index.php', '_self');")/>
     </form>
     </div>

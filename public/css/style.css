@@ -28,13 +28,13 @@ textarea {
 
 #home {
         background-image:url(../../public/img/body.png);
-	background-repeat:no-repeat;
 	background-size:100%;
 	margin-left:auto;
 	margin-right:auto;
         margin-top: 0.5%;
 	width: 66%;
 	min-height: 630px;
+        padding-bottom: 40px;
 }
 
 #home_body {
@@ -50,8 +50,10 @@ textarea {
 }
 
 #home_body table {
+        width: 780px;
+        table-layout: fixed;
         border:2px solid white;
-	border-collapse:collapse;
+        border-collapse:collapse;
 }
 
 #home_body th {
@@ -65,6 +67,14 @@ textarea {
 }
 
 #home_body td {
+        white-space: pre;          
+        white-space: pre-wrap;   
+        white-space: pre-line;      
+        white-space: -pre-wrap;    
+        white-space: -o-pre-wrap;  
+        white-space: -moz-pre-wrap; 
+        white-space: -hp-pre-wrap;  
+        word-wrap: break-word; 
         font-family: Georgia;
         color: white;
         background-color: #39B54A;
@@ -122,7 +132,7 @@ textarea {
 	margin-right:auto;
         margin-top: 0.5%;
 	width: 66%;
-	height: 630px;
+	height: 790px;
         color: white;
         font-weight: bold;
         font-size: 18px;
@@ -137,7 +147,7 @@ textarea {
 	margin-right:auto;
         margin-top: 0.5%;
 	width: 66%;
-	height: 630px;
+	height: 690px;
         color: white;
         font-weight: bold;
         font-size: 18px;
@@ -167,7 +177,7 @@ textarea {
 	margin-right:auto;
         margin-top: 0.5%;
 	width: 66%;
-	height: 630px;
+	height: 790px;
         color: white;
         font-weight: bold;
         font-size: 18px;
@@ -175,7 +185,7 @@ textarea {
 }
 
 #menu {
-	margin-left: 227px;  
+	margin-left: 226px;  
 }
 
 #menu a {
@@ -210,8 +220,7 @@ textarea {
         font-family: Georgia;
         font-size: 14px;
         font-weight: bold;
-        padding-left: 125px;
-        padding-right: 125px;
+        width: 305px;
         padding-top: 5px;
         padding-bottom: 5px;
         border-radius: 3px;
@@ -403,13 +412,18 @@ textarea {
 }
 
 #gmaps_button {
+    font-family: Georgia;
+    font-size: 14px;
+    font-weight: bold;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     border-radius: 3px;
     background-color: white;
     border: solid 1px white;
     color: #39B54A;
     outline: none;
-    font-family: Georgia;
-    font-size: 18px;
 }
 
 #gmaps_button:hover {
@@ -501,4 +515,12 @@ textarea {
         outline: none;
         border: solid 1px white;
         font-family: Georgia;
+}
+
+h3 {
+    font-family:"Palatino Linotype", "Book Antiqua", Palatino, serif;
+    font-size:20px;
+    color: white;
+    font-weight: bold;
+    margin-left: 6%;
 }

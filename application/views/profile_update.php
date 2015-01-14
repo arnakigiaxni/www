@@ -11,6 +11,7 @@
     
     $frm = filter_input(INPUT_SERVER, 'PHP_SELF', FILTER_SANITIZE_STRING);
     $srv = filter_input(INPUT_SERVER, 'REQUEST_METHOD', FILTER_SANITIZE_STRING);
+    $msg = "Επεξεργαστείτε το προφίλ σας αλλάζοντας τα παρακάτω πεδία";
     if ($srv == 'POST'){
         $comp_name = filter_input(INPUT_POST, 'comp_name');
         $display_name = filter_input(INPUT_POST, 'display_name');
@@ -67,12 +68,14 @@
     include 'menu.php';
     ?>
     <div id="update">
+    <br />
     <?php
     if (isset ($update_res)){
         if (in_array("1", $update_res)) {
-            echo "Το προφίλ σας ενημερώθηκε επιτυχώς!";
+            $msg = "Το προφίλ σας ενημερώθηκε επιτυχώς!";
         }
     }
+    echo "<h3>$msg</h3>";
     ?>
     <br />
     <br />
@@ -266,7 +269,11 @@
         ?></span>
         <br />
         <br />
+        <br />
+        <br />
         <input type="submit" value="Επεξεργασία" class="buttons" id="button"/>
+        <br />
+        <br />
         <input type="button" value="Ακύρωση" id="button" onclick="window.open('../controllers/index.php', '_self');")/>
     </form>
     </div>
