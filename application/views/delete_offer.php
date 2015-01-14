@@ -43,7 +43,7 @@
     <form action="<?php echo $frm?>" method="post" class="forms" enctype="multipart/form-data">
         <br />
         <br />
-        <label>Προσφορές: </label><select name='id' id="id"><?php ShowOffers($_SESSION['id']) ?></select>
+        <label>Προσφορές: </label><select name='id' id="add_cat_id"><?php ShowOffers($_SESSION['id']) ?></select>
         <span class='error'></span>
         <br />
         <br />

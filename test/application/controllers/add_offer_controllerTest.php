@@ -104,10 +104,10 @@ class AddOfferControllerTest extends PHPUnit_Framework_TestCase {
         );
     }
 
-    public function testOfferName() {
+    public function testvalidateOfferName() {
         $this->assertEquals(
                 0,
-                $this->object->offerName("testName")
+                $this->object->validateOfferName("testName")
         );
     }
     
@@ -115,7 +115,7 @@ class AddOfferControllerTest extends PHPUnit_Framework_TestCase {
     public function testOfferNameInvalid() {
         $this->assertEquals(
                 -1,
-                $this->object->offerName("!@#$%^")
+                $this->object->validateOfferName("!@#$%^")
         );
     }
     

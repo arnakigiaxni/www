@@ -134,7 +134,7 @@
         </span>
         <br />
         <br />
-        <label>Ποσοστό έκπτωσης (%):</label><input type='text' name='discount' maxlength='3' id="add_discount" value="<?php if (isset ($discount)){ echo $discount; } ?>"> 
+        <label>Ποσοστό έκπτωσης (%):</label><input type='text' name='discount' maxlength='4' id="add_discount" value="<?php if (isset ($discount)){ echo $discount; } ?>"> 
         <span class='error'>*
         <?php
             if (isset ($offervar)){
