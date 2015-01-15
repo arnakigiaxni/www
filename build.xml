@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="OfferFinder" default="tests" basedir="." description="Find Offers near you!">
+ 
+ <target name="tests">
+  <phpunit printsummary="true" haltonfailure="true">
+   <batchtest>
+    <fileset dir="test/application/controllers/">
+     <include name="*Test.php"/>
+    </fileset>
+   </batchtest>
+  </phpunit>
+ </target>
+ 
+</project>
