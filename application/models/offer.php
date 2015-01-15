@@ -1,4 +1,6 @@
 <?php
+
+        mysql_query("SET NAMES utf8");
         
         function AddOffer($offer_name, $offer_descr, $cat_id, $start_date, 
                 $end_date, $discount, $price, $userId){

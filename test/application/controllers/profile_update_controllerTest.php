@@ -93,216 +93,216 @@ class ProfileUpdateControllerTest extends PHPUnit_Framework_TestCase {
     }
     
 
-    public function testCompName() {
+    public function testValidateCompName() {
         $this->assertEquals(
                 0, 
-                $this->object->CompName("testName")
+                $this->object->validateCompName("testName")
         );
     }
     
-    public function testCompNameExists() {
+    public function testValidateCompNameExists() {
         $this->assertEquals(
                 -1,
-                $this->object->compName("carrefour")
+                $this->object->validateCompName("carrefour")
         );
     }
     
 
-    public function testCompNameEmpty() {
+    public function testValidateCompNameEmpty() {
         $this->assertEquals(
                 -2,
-                $this->object->compName("")
+                $this->object->validateCompName("")
         );
     }
     
-    public function testCompNameInvalid(){
+    public function testValidateCompNameInvalid(){
         $this->assertEquals(
                 -3,
-                $this->object->compName("@#$%^")
+                $this->object->validateCompName("@#$%^")
         );
     }
     
 
-    public function testDisplayName() {
+    public function testValidateDisplayName() {
         $this->assertEquals(
                 0, 
-                $this->object->DisplayName("testName")
+                $this->object->validateDisplayName("testName")
         );
     }
     
-    public function testDisplayNameEmpty(){
+    public function testValidateDisplayNameEmpty(){
         $this->assertEquals(
                 -4,
-                $this->object->displayName("")
+                $this->object->validateDisplayName("")
         );
     }
     
-    public function testDisplayNameInvalid(){
+    public function testValidateDisplayNameInvalid(){
         $this->assertEquals(
                 -5,
-                $this->object->displayName("@#$%^")
+                $this->object->validateDisplayName("@#$%^")
         );
     }
 
 
-    public function testPassword() {
+    public function testValidatePassword() {
         $this->assertEquals(
                 0, 
-                $this->object->password("123456789")
+                $this->object->validatePassword("123456789")
         );
     }
     
-    public function testPasswordEmpty() {
+    public function testValidatePasswordEmpty() {
         $this->assertEquals(
                 -6, 
-                $this->object->password("")
+                $this->object->validatePassword("")
         );
     }
     
-    public function testPasswordInvalid(){
+    public function testValidatePasswordInvalid(){
         $this->assertEquals(
                 -7,
-                $this->object->password("@#$%^&")
+                $this->object->validatePassword("@#$%^&")
         );
     }
 
 
-    public function testEmail() {
+    public function testValidateEmail() {
         $this->assertEquals(
                 0, 
-                $this->object->email("testEmail@gmail.com")
+                $this->object->validateEmail("testEmail@gmail.com")
         );
     }
     
-    public function testEmailExists() {
+    public function testValidateEmailExists() {
         $this->assertEquals(
                 -8,
-                $this->object->email("carrefour_serres@gmail.com")
+                $this->object->validateEmail("carrefour_serres@gmail.com")
         );
     }
     
-    public function testEmailEmpty() {
+    public function testValidateEmailEmpty() {
         $this->assertEquals(
                 -9, 
-                $this->object->email("")
+                $this->object->validateEmail("")
         );
     }
     
-    public function testEmailInvalid() {
+    public function testValidateEmailInvalid() {
         $this->assertEquals(
                 -10, 
-                $this->object->email("whatever")
+                $this->object->validateEmail("whatever")
         );
     }
 
 
-    public function testPhone() {
+    public function testValidatePhone() {
         $this->assertEquals(
                 0, 
-                $this->object->phone("2310790790")
+                $this->object->validatePhone("2310790790")
         );
     }
     
-    public function testPhoneExists() {
+    public function testValidatePhoneExists() {
         $this->assertEquals(
                 -11,
-                $this->object->phone("2321056230")
+                $this->object->validatePhone("2321056230")
         );
     }
     
-    public function testPhoneEmpty() {
+    public function testValidatePhoneEmpty() {
         $this->assertEquals(
                 -12, 
-                $this->object->phone("")
+                $this->object->validatePhone("")
         );
     }
     
-    public function testPhoneInvalid() {
+    public function testValidatePhoneInvalid() {
         $this->assertEquals(
                 -13, 
-                $this->object->phone("whatever")
+                $this->object->validatePhone("whatever")
         );
     }
     
-    public function testPhoneLessThan10() {
+    public function testValidatePhoneLessThan10() {
         $this->assertEquals(
                 -13, 
-                $this->object->phone("2345")
+                $this->object->validatePhone("2345")
         );
     }
 
 
-    public function testCity() {
+    public function testValidateCity() {
         $this->assertEquals(
                 0, 
-                $this->object->city("thessaloniki")
+                $this->object->validateCity("thessaloniki")
         );
     }
     
-    public function testCityEmpty() {
+    public function testValidateCityEmpty() {
         $this->assertEquals(
                 -14, 
-                $this->object->city("")
+                $this->object->validateCity("")
         );
     }
 
 
-    public function testAddress() {
+    public function testValidateAddress() {
         $this->assertEquals(
                 0, 
-                $this->object->address("emporiou 10")
+                $this->object->validateAddress("emporiou 10")
         );
     }
     
-    public function testAddressEmpty() {
+    public function testValidateAddressEmpty() {
         $this->assertEquals(
                 -15, 
-                $this->object->address("")
+                $this->object->validateAddress("")
         );
     }
 
 
-    public function testPostalCode() {
+    public function testValidatePostalCode() {
         $this->assertEquals(
                 0, 
-                $this->object->postalCode("57100")
+                $this->object->validatePostalCode("57100")
         );
     }
     
-    public function testPostalCodeEmpty() {
+    public function testValidatePostalCodeEmpty() {
         $this->assertEquals(
                 -16, 
-                $this->object->postalCode("")
+                $this->object->validatePostalCode("")
         );
     }
 
 
-    public function testLatitude() {
+    public function testValidateLatitude() {
         $this->assertEquals(
                 0, 
-                $this->object->latitude("40.401000")
+                $this->object->validateLatitude("40.401000")
         );
     }
     
-    public function testLatitudeEmpty() {
+    public function testValidateLatitudeEmpty() {
         $this->assertEquals(
                 -17, 
-                $this->object->latitude("")
+                $this->object->validateLatitude("")
         );
     }
 
 
-    public function testLongitude() {
+    public function testValidateLongitude() {
         $this->assertEquals(
                 0, 
-                $this->object->longitude("40.401000")
+                $this->object->validateLongitude("40.401000")
         );
     }
     
-    public function testLongitudeEmpty() {
+    public function testValidateLongitudeEmpty() {
         $this->assertEquals(
                 -18, 
-                $this->object->longitude("")
+                $this->object->validateLongitude("")
         );
     }
 

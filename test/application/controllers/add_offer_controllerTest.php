@@ -104,7 +104,7 @@ class AddOfferControllerTest extends PHPUnit_Framework_TestCase {
         );
     }
 
-    public function testvalidateOfferName() {
+    public function testValidateOfferName() {
         $this->assertEquals(
                 0,
                 $this->object->validateOfferName("testName")
@@ -112,7 +112,7 @@ class AddOfferControllerTest extends PHPUnit_Framework_TestCase {
     }
     
 
-    public function testOfferNameInvalid() {
+    public function testValidateOfferNameInvalid() {
         $this->assertEquals(
                 -1,
                 $this->object->validateOfferName("!@#$%^")
@@ -120,130 +120,130 @@ class AddOfferControllerTest extends PHPUnit_Framework_TestCase {
     }
     
 
-    public function testOfferNameEmpty() {
+    public function testValidateOfferNameEmpty() {
         $this->assertEquals(
                 -2,
-                $this->object->offerName("")
+                $this->object->validateOfferName("")
         );
     }
 
 
-    public function testOfferDescr() {
+    public function testValidateOfferDescr() {
         $this->assertEquals(
                 0,
-                $this->object->offerDescr("testDescr")
+                $this->object->validateOfferDescr("testDescr")
         );
     }
     
 
-    public function testOfferDescrInvalid() {
+    public function testValidateOfferDescrInvalid() {
         $this->assertEquals(
                 -3,
-                $this->object->offerDescr("!#$%^&*")
+                $this->object->validateOfferDescr("!#$%^&*")
         );
     }
 
 
-    public function testStartDate() {
+    public function testValidateStartDate() {
         $this->assertEquals(
                 0,
-                $this->object->startDate("2014-12-3")
+                $this->object->validateStartDate("2014-12-3")
         );
     }
     
 
-    public function testStartDateEmpty() {
+    public function testValidateStartDateEmpty() {
         $this->assertEquals(
                 -4,
-                $this->object->startDate("")
+                $this->object->validateStartDate("")
         );
     }
 
 
-    public function testEndDate() {
+    public function testValidateEndDate() {
         $this->assertEquals(
                 0,
-                $this->object->endDate("2014-12-5")
+                $this->object->validateEndDate("2014-12-5")
         );
     }
     
 
-    public function testEndDateEmpty() {
+    public function testValidateEndDateEmpty() {
         $this->assertEquals(
                 -5,
-                $this->object->endDate("")
+                $this->object->validateEndDate("")
         );
     }
 
 
-    public function testDiscount() {
+    public function testValidateDiscount() {
         $this->assertEquals(
                 0,
-                $this->object->discount("5")
+                $this->object->validateDiscount("5")
         );
     }
     
 
-    public function testDiscountInvalid() {
+    public function testValidateDiscountInvalid() {
         $this->assertEquals(
                 -6,
-                $this->object->discount("something")
+                $this->object->validateDiscount("something")
         );
     }
     
 
-    public function testDiscountMoreThan100() {
+    public function testValidateDiscountMoreThan100() {
         $this->assertEquals(
                 -7,
-                $this->object->discount("105")
+                $this->object->validateDiscount("105")
         );
     }
     
 
-    public function testDiscountLessThan0() {
+    public function testValidateDiscountLessThan0() {
         $this->assertEquals(
                 -6,
-                $this->object->discount("-10")
+                $this->object->validateDiscount("-10")
         );
     }
     
 
-    public function testDiscountEmpty() {
+    public function testValidateDiscountEmpty() {
         $this->assertEquals(
                 -8,
-                $this->object->discount("")
+                $this->object->validateDiscount("")
         );
     }
 
 
-    public function testPrice() {
+    public function testValidatePrice() {
         $this->assertEquals(
                 0,
-                $this->object->price("3")
+                $this->object->validatePrice("3")
         );
     }
     
 
-    public function testPriceInvalid() {
+    public function testValidatePriceInvalid() {
         $this->assertEquals(
                 -9,
-                $this->object->price("something")
+                $this->object->validatePrice("something")
         );
     }
     
 
-    public function testPriceLessThan0() {
+    public function testValidatePriceLessThan0() {
         $this->assertEquals(
                 -9,
-                $this->object->price("-10")
+                $this->object->validatePrice("-10")
         );
     }
     
 
-    public function testPriceEmpty() {
+    public function testValidatePriceEmpty() {
         $this->assertEquals(
                 -10,
-                $this->object->price("")
+                $this->object->validatePrice("")
         );
         mysql_query("DELETE FROM offer ORDER BY id DESC LIMIT 1");
     }
